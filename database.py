@@ -138,16 +138,3 @@ event5 = Event(4,
 
 people = {0: person1, 1: person2, 2: person3, 3: person4}
 events = {0: event1, 1: event2, 2: event3, 3: event4, 4: event5}
-
-class PersonEncoder(json.JSONEncoder):
-    def default(self, obj):
-        if isinstance(obj, Person):
-            # Convert Person instance to a dictionary
-            return {"name": obj.name, "age": obj.email}
-        return super().default(obj)
-
-
-
-if __name__ == '__main__':
-
-    print(person1)
