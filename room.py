@@ -1,3 +1,9 @@
 class Room:
 	id = 0
-	persons = []
+	users = []
+
+	def __init__(self, id, persons):
+		self.id = id
+		self.users = persons
+
+

@@ -1,43 +1,57 @@
 # save this as app.py
 from flask import Flask
 from flask import request
-import database
-import room
+from database import *
+from room import *
+import qrcode
+import os
 
 app = Flask(__name__)
-
-rooms_dict = { "soba1" : "mashina" }
+rooms_dict = { }
 
 def room_to_json(room):
-	return "room : { }"
+	return "{{ id : {}, users: {} }}\n".format(room.id, str(room.users))
+def key_to_intkey(key):
+	return sum(map(ord, list(key)))
 
 
-@app.route('/')
+@app.route('/cleanup')
+def cleanup():
+	for elt in os.listdir("static"):
+		os.remove("static/" + elt)
+	return "OK"
+
+@app.route('/qr/<id>')
+def qr_codes(id): 
+	id = key_to_intkey(id)
+	#print("qr access {}".format(id))
+	img_src = "{}.png".format(id)
+	return app.send_static_file(img_src)
+
+@app.route('/', methods=['POST', 'GET'])
 def home():
 	return "<button>Ustvari sobo</button>"
 
 @app.route('/room/<room_id>', methods=['POST', 'GET'])
 def prijava(room_id):
-	if(room_id in rooms_dict):
-		return room_to_json(rooms_dict[room_id])
-	
-	#new_room = new
-		#tu generiramo nobo sobo in jo damo v dict.	Lahko se naredi qr coda, ...
-		#mogoce ... nastavimo trenutno osebo na moderatoraj
-		#oseba pa dobimo ven iz requesta.
+	room_id = key_to_intkey(room_id)
 
-	return "Kulči"
+	if "user" not in request.form:
+		return "Invalid user"
+	user_id = int(request.form["user"])
+	user = people[user_id]
 
-	#pogledas ali je oseba ze v sobi, ce se ni, dodamo. To je to.
+	#ce soba ne obstaja jo naredi
+	if(room_id not in rooms_dict):
+		qr_content = "route/{}".format(room_id) #qr code content
+		qr_code_img = qrcode.make(qr_content)
+		qr_code_img.save("static/{}.png".format(room_id))
 
+		new_room = Room(room_id, [])
+		rooms_dict[new_room.id] = new_room
 
+	room = rooms_dict[room_id]
+	if(user not in room.users):
+		room.users.append(user)
 
-
-"""
-	error = None
-	if request.method == 'POST':
-		print(request.form)
-	else:
-		print("GET")
-	return "OK"
-"""
+	return room_to_json(room)
