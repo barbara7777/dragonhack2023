@@ -80,7 +80,7 @@ def rank_events(room_id):
 
 	return events_to_json(events)
 
-@app.route("/organise/<room_id>/<event_id>", methods=['POST', 'GET'])
+@app.route("/organize/<room_id>/<event_id>", methods=['POST', 'GET'])
 def organize(room_id, event_id):
 	try:
 		room_id = key_to_intkey(room_id)
@@ -98,9 +98,13 @@ def organize(room_id, event_id):
 
 	##mkay tu zdej ustvarimo seznam in razporeditve
 	status, result = gpt_create_arrangement(len(room.users), event.title)
-	if(status == 1):
-		return result
-	return "Opa, neki ni ok.\n"
+	if(status != 1):
+		return "Opa, neki ni ok.\n"
+	
+	##return result
+
+	##naceloma je result zdej json z raporeditvami, zraven dodamo se kr vse podatke o sobi, tj. osebe
+	return "{{ \"users\": {}, \"arrangements\": {}, \"event\": \"{}\" }}".format(room.users, result, event)
 
 @app.route("/invite/<room_id>/<event_id>", methods=['POST', 'GET'])
 def invite(room_id, event_id):
@@ -124,8 +128,8 @@ def invite(room_id, event_id):
 	event = events[event_id]
 
 	status, result = gpt_create_invitation(user.name, event.title, event.date)
-	if(status == 1):
-		return result
-	return "Opa, neki ni ok.\n"
+	if(status != 1):
+		return "Opa, neki ni ok.\n"
+	return result
 
 
