@@ -38,8 +38,8 @@ def gpt_create_arrangement(num_people, party_type):
 
 	#prompt = ("We are organising a {} party. There will be n = {} guests. Arrange tasks and party supplies between guests. Output must be in the following format: { [ tasks for guest 1 ] , ... , [ tasks for guest n ] }, { [ supplies guest 1 should bring ] , ... , [ supplies guest n should bring ] }").format(party_type, num_people)
 	prompt = ("We are organising a {} party. There will be n = {} guests. Arrange tasks and party supplies between guests."
-		+"Output must be in the following format: {{ tasks:{{ '1': [ tasks for guest 1 ] , ... , 'n': [ tasks for guest n ] }}, "
-		+ "supplies:{{ '1': [ supplies guest 1 should bring ] , ... , 'n': [ supplies guest n should bring ] }} }}"
+		+"Output must be in the following format: {{ \"tasks\":{{ \"1\": [ tasks for guest 1 ] , ... , \"n\": [ tasks for guest n ] }}, "
+		+ "\"supplies\":{{ \"1\": [ supplies guest 1 should bring ] , ... , \"n\": [ supplies guest n should bring ] }} }}"
 		).format(party_type,num_people)
 
 	return askgpt(prompt)

@@ -106,7 +106,7 @@ def organize(room_id, event_id):
 	##return result
 
 	##naceloma je result zdej json z raporeditvami, zraven dodamo se kr vse podatke o sobi, tj. osebe
-	return "{{ \"users\": {}, \"arrangements\": {}, \"event\": \"{}\" }}".format(room.users, result, event)
+	return "{{ \"users\": {}, \"arrangements\": {}, \"event\": {} }}".format(room.users, result, event)
 
 @app.route("/invite/<room_id>/<event_id>", methods=['POST', 'GET'])
 def invite(room_id, event_id):
