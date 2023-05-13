@@ -92,4 +92,38 @@ if __name__ == '__main__':
                    5,
                    6)
 
+    event2 = Event(1,
+                   "Hanging by the river",
+                   "Let's meet by the Ljubljanica river and have a picnic.",
+                   "friday",
+                   "18:00",
+                   "Ljubljana",
+                   7,
+                   3)
 
+    event3 = Event(2,
+                   "Cinema",
+                   "Avatar 2",
+                   "wednesday",
+                   "20:00",
+                   "Ljubljana",
+                   8,
+                   8)
+
+    event4 = Event(3,
+                   "Disco",
+                   "Let's get crazy. YOLO",
+                   "friday",
+                   "22:00",
+                   "Ljubljana",
+                   6,
+                   7)
+
+    event5 = Event(4,
+                   "Baking party",
+                   "Let's meet at my house and bake cookies",
+                   "saturday",
+                   "16:00",
+                   "Domžale",
+                   6,
+                   30)
