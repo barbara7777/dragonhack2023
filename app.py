@@ -31,6 +31,11 @@ def qr_codes(id):
 def home():
 	return "<button>Ustvari sobo</button>"
 
+
+@app.route('/room', methods=['POST', 'GET'])
+def show_rooms():
+	return str(rooms_dict)
+
 @app.route('/room/<room_id>', methods=['POST', 'GET'])
 def prijava(room_id):
 	room_id = key_to_intkey(room_id)

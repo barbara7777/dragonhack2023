@@ -1,7 +1,6 @@
 from travel import *
 from database import people, events
 
-
 def calculate_carbon_footprint(users):
 	event_carbon_footprints = {}
 
@@ -33,3 +32,9 @@ class Room:
 	def __init__(self, id, persons):
 		self.id = id
 		self.users = persons
+
+	def __str__(self):
+		#return ("R{}: {}".format(self.id, str(self.users)))
+		return str(self.users)
+	def __repr__(self):
+		return self.__str__()
