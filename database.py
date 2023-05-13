@@ -43,8 +43,10 @@ class Person:
         self.hates = hates
 
     def __str__(self):
-        return self.name + " " + self.email + " " + self.phone
+        return str(self.id) + ": " +self.name + " " + self.email
 
+    def __repr__(self):
+        return self.__str__()
 
 # ----------------------------------------------------------------------
 
@@ -131,3 +133,7 @@ event5 = Event(4,
 
 people = {0: person1, 1: person2, 2: person3, 3: person4}
 events = {0: event1, 1: event2, 2: event3, 3: event4, 4: event5}
+
+
+if __name__ == '__main__':
+    print([person1])
