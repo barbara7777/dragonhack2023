@@ -1,2 +1,4 @@
 # dragonhack2023
-PartiMode app repo
+PartyMode app repo
+
+best app for parties planning 🎉
