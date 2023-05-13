@@ -3,6 +3,7 @@ import 'bulma/css/bulma.min.css';
 import {useState} from "react";
 import {Navigate} from "react-router-dom";
 import ActivityDisplay from "./ActivityDisplay";
+import {MapContainer, Marker, Popup, TileLayer} from "react-leaflet";
 
 
 function Map() {
@@ -11,34 +12,34 @@ function Map() {
 
     return (
         <div className="App">
-<br /><br /><br />
+            <br/><br/><br/>
             {
                 goHome && <Navigate to={"/"}/>
             }
-            <div><h1  class="title is-1 has-text-white maintitle" onClick={() => {setGoHome(true)}}>PartyMode</h1></div>
-            <br /><br /><br />
+            <div><h1 class="title is-1 has-text-white maintitle" onClick={() => {
+                setGoHome(true)
+            }}>PartyMode</h1></div>
+            <br/><br/><br/>
             <div className="container">
 
                 <div className="columns">
                     <div className="column">
 
-                        <div className="card">
-                            <div className="card-content">
-                                <div className="media">
-                                    <div className="media-left">
-                                    </div>
-                                    <div className="media-content">
-                                        <p className="title is-1" style={{"font-size": "500% !important"}}>Map goes here</p>
-                                    </div>
-                                </div>
 
-                                <div className="content">
-                                </div>
-                            </div>
-                        </div>
+                        <MapContainer center={[46.057, 14.5058]} zoom={13} scrollWheelZoom={false}>
+                            <TileLayer
+                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                            />
+                            <Marker position={[51.505, -0.09]}>
+                                <Popup>
+                                    A pretty CSS3 popup. <br/> Easily customizable.
+                                </Popup>
+                            </Marker>
+                        </MapContainer>
+
 
                     </div>
-
 
 
                     <div className="column">
@@ -73,25 +74,9 @@ function Map() {
                     </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 </div>
 
             </div>
-
-
 
 
             {/*<header className="App-header">*/}

@@ -50,3 +50,9 @@
     animation: gradient 4s ease infinite;
     border-radius: 40px !important;
 }
+
+.leaflet-container {
+    width: 100wh;
+    height: 70vh;
+    border-radius: 30px;
+}
