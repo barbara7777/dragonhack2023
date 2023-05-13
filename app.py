@@ -21,7 +21,7 @@ def cleanup():
 	return "OK"
 
 @app.route('/qr/<id>')
-def qr_codes(id): 
+def qr_codes(id):
 	id = key_to_intkey(id)
 	#print("qr access {}".format(id))
 	img_src = "{}.png".format(id)
@@ -54,3 +54,8 @@ def prijava(room_id):
 		room.users.append(user)
 
 	return room_to_json(room)
+
+
+@app.route('/room/<room_id>/rank-event', methods=['POST', 'GET'])
+def rank_events(room):
+
