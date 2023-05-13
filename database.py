@@ -46,84 +46,88 @@ class Person:
         return self.name + " " + self.email + " " + self.phone
 
 
-if __name__ == '__main__':
-    person1 = Person(0,
-                     "Matic",
-                     "matic.hocevar@gmail.com",
-                     "031 123 456",
-                     ["monday", "tuesday", "friday"],
-                     "Ljubljana",
-                     ["cinema", "hanging by the river"],
-                     ["balls"])
+# ----------------------------------------------------------------------
 
-    person2 = Person(1,
-                     "Vilma",
-                     "vilma1999@gmail.com",
-                     "031 654 321",
-                     ["friday", "saturday", "sunday"],
-                     "Ljubljana",
-                     ["cookies", "disco", "zoo"],
-                     ["horses"])
+person1 = Person(0,
+                 "Matic",
+                 "matic.hocevar@gmail.com",
+                 "031 123 456",
+                 ["monday", "tuesday", "friday"],
+                 "Ljubljana",
+                 ["cinema", "hanging by the river"],
+                 ["balls"])
 
-    person3 = Person(2,
-                     "Majda",
-                     "majdi-unicorn37@gmail.com",
-                     "031 123 456",
-                     ["monday", "tuesday", "friday", "satuday", "sunday"],
-                     "Domžale",
-                     ["horse riding", "hanging by the river", "cinema", "trampolines"],
-                     ["disco", "heights"])
+person2 = Person(1,
+                 "Vilma",
+                 "vilma1999@gmail.com",
+                 "031 654 321",
+                 ["friday", "saturday", "sunday"],
+                 "Ljubljana",
+                 ["cookies", "disco", "zoo"],
+                 ["horses"])
 
-    person4 = Person(3,
-                     "Bojan",
-                     "bojan.razkrosi@hotmail.com",
-                     "031 123 456",
-                     ["monday", "tuesday", "wednesday", "satuday", "sunday"],
-                     "Kranj",
-                     ["horse riding", "cookies", "trampolines"],
-                     ["water"])
+person3 = Person(2,
+                 "Majda",
+                 "majdi-unicorn37@gmail.com",
+                 "031 123 456",
+                 ["monday", "tuesday", "friday", "satuday", "sunday"],
+                 "Domžale",
+                 ["horse riding", "hanging by the river", "cinema", "trampolines"],
+                 ["disco", "heights"])
 
-    event1 = Event(0,
-                   "Horse riding",
-                   "Horse riding in the forest",
-                   "monday",
-                   "12:00",
-                   "Ljubljana",
-                   5,
-                   6)
+person4 = Person(3,
+                 "Bojan",
+                 "bojan.razkrosi@hotmail.com",
+                 "031 123 456",
+                 ["monday", "tuesday", "wednesday", "satuday", "sunday"],
+                 "Kranj",
+                 ["horse riding", "cookies", "trampolines"],
+                 ["water"])
 
-    event2 = Event(1,
-                   "Hanging by the river",
-                   "Let's meet by the Ljubljanica river and have a picnic.",
-                   "friday",
-                   "18:00",
-                   "Ljubljana",
-                   7,
-                   3)
+event1 = Event(0,
+               "Horse riding",
+               "Horse riding in the forest",
+               "monday",
+               "12:00",
+               "Ljubljana",
+               5,
+               6)
 
-    event3 = Event(2,
-                   "Cinema",
-                   "Avatar 2",
-                   "wednesday",
-                   "20:00",
-                   "Ljubljana",
-                   8,
-                   8)
+event2 = Event(1,
+               "Hanging by the river",
+               "Let's meet by the Ljubljanica river and have a picnic.",
+               "friday",
+               "18:00",
+               "Ljubljana",
+               7,
+               3)
 
-    event4 = Event(3,
-                   "Disco",
-                   "Let's get crazy. YOLO",
-                   "friday",
-                   "22:00",
-                   "Ljubljana",
-                   6,
-                   7)
+event3 = Event(2,
+               "Cinema",
+               "Avatar 2",
+               "wednesday",
+               "20:00",
+               "Ljubljana",
+               8,
+               8)
 
-    event5 = Event(4,
-                   "Baking party",
-                   "Let's meet at my house and bake cookies",
-                   "saturday",
-                   "16:00",
-                   "Domžale",
-                   6,
-                   30)
+event4 = Event(3,
+               "Disco",
+               "Let's get crazy. YOLO",
+               "friday",
+               "22:00",
+               "Ljubljana",
+               6,
+               7)
+
+event5 = Event(4,
+               "Baking party",
+               "Let's meet at my house and bake cookies",
+               "saturday",
+               "16:00",
+               "Domžale",
+               6,
+               30)
+
+people = {0: person1, 1: person2, 2: person3, 3: person4}
+events = {0: event1, 1: event2, 2: event3, 3: event4, 4: event5}
