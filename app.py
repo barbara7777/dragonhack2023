@@ -11,8 +11,21 @@ rooms_dict = { }
 
 def room_to_json(room):
 	return "{{ id : {}, users: {} }}\n".format(room.id, str(room.users))
+
+
+def events_to_json(events):
+	return str(list(events.values()))
+
+
 def key_to_intkey(key):
 	return sum(map(ord, list(key)))
+
+
+
+@app.route('/event', methods=['POST', 'GET'])
+def show_events():
+	return str(list(events.values()))
+
 
 @app.route('/cleanup')
 def cleanup():
@@ -71,3 +84,4 @@ def rank_events(room_id):
 	attendants = room.users
 	calculate_rank(attendants)
 
+	return events_to_json(events)

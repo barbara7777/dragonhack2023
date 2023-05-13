@@ -5,7 +5,7 @@ def calculate_carbon_footprint(users):
 	event_carbon_footprints = {}
 
 	for event in events.values():
-		for person in users.values():
+		for person in users:
 			dist = calculate_dist(person, event)
 			footprint = calculate_car_carbon_footprint(dist)
 			event_carbon_footprints[event.id] = footprint
