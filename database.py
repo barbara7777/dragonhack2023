@@ -45,7 +45,6 @@ class Person:
     def __str__(self):
         return self.name + " " + self.email + " " + self.phone
 
-
 if __name__ == '__main__':
     person1 = Person(0,
                      "Matic",

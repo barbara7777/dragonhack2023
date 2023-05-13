@@ -1,6 +1,8 @@
 # save this as app.py
 from flask import Flask
 from flask import request
+import database
+import room
 
 app = Flask(__name__)
 
@@ -24,9 +26,6 @@ def prijava(room_id):
 		#mogoce ... nastavimo trenutno osebo na moderatoraj
 		#oseba pa dobimo ven iz requesta.
 
-		
-
-		return "Ta soba še ne obstaja."
 	return "Kulči"
 
 	#pogledas ali je oseba ze v sobi, ce se ni, dodamo. To je to.
