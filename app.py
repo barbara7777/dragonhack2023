@@ -56,6 +56,13 @@ def prijava(room_id):
 	return room_to_json(room)
 
 
-@app.route('/room/<room_id>/rank-event', methods=['POST', 'GET'])
-def rank_events(room):
+@app.route('/rank-event/<room_id>', methods=['POST', 'GET'])
+def rank_events(room_id):
+	room_id = key_to_intkey(room_id)
+	if(room_id not in rooms_dict):
+		return "Invalid room"
+	room = rooms_dict[room_id]
+
+	attendants = room.users
+	calculate_rank(attendants)
 
