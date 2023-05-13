@@ -1,0 +1,45 @@
+.App {
+
+    height: 100vh;
+
+
+    text-align: center;
+}
+
+/*on hover on card show link cursor*/
+.card:hover {
+    cursor: pointer;
+}
+
+.maintitle {
+    /*color: white;*/
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bolder;
+    background-size: 400% 400%;
+    animation: gradient 7s ease infinite;
+    letter-spacing: 0.35rem;
+    /*all caps*/
+    font-variant: small-caps;
+    font-size: 450% !important;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+
+
+}
+
+.card {
+    border: 5px solid pink !important;;
+    border-radius: 20px !important;
+}
