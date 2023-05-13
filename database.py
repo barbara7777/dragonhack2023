@@ -115,7 +115,7 @@ event2 = Event(1,
 			   "18:00",
 			   "46.041514, 14.513523",
 			   7,
-			   3)
+			   0)
 
 event3 = Event(2,
 			   "Cinema",
@@ -133,7 +133,7 @@ event4 = Event(3,
 			   "22:00",
 			   "46.05592740593597, 14.504080196029753",
 			   6,
-			   7)
+			   17)
 
 event5 = Event(4,
 			   "Baking party",
@@ -142,7 +142,7 @@ event5 = Event(4,
 			   "16:00",
 			   "46.067100, 14.491936",
 			   6,
-			   30)
+			   1)
 
 people = {0: person1, 1: person2, 2: person3, 3: person4}
 events = {0: event1, 1: event2, 2: event3, 3: event4, 4: event5}
