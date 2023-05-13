@@ -3,11 +3,13 @@ import 'bulma/css/bulma.min.css';
 import {useState} from "react";
 import {Navigate} from "react-router-dom";
 import ActivityDisplay from "./ActivityDisplay";
-import {MapContainer, Marker, Popup, TileLayer} from "react-leaflet";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 
+// import Modal from './Modal';
 
 function Map() {
     const [goHome, setGoHome] = useState(false);
+    const [showModal, setShowModal] = useState(false);
 
 
     return (
@@ -16,17 +18,39 @@ function Map() {
             {
                 goHome && <Navigate to={"/"}/>
             }
+            
+           
             <div><h1 class="title is-1 has-text-white maintitle" onClick={() => {
                 setGoHome(true)
             }}>PartyMode</h1></div>
-            <br/><br/><br/>
+            <br /><br /><br />
+            
+            
             <div className="container">
-
+            <button className="button is-primary is-large" onClick={() => setShowModal(true)}>Show Modal</button>
+                        <div class={`modal ${showModal ? "is-active" : ""}`}>
+                        <div class="modal-background"></div>
+                        <div class="modal-card">
+                        <header class="modal-card-head">
+                        <p class="modal-card-title">Optimal choice</p>
+                        <button class="delete" aria-label="close" onClick={() => setShowModal(false)}></button>
+                        </header>
+                        <section class="modal-card-body">
+                        Best place for Avatar 2 to have your meet is at Kino Šiška at 20h.
+                        {/* <!-- Content ... --> */}
+                        </section>
+                            <footer class="modal-card-foot">
+                            <button class="button is-success">Save changes</button>
+                            <button class="button">Cancel</button>
+                            </footer>
+                        </div>
+                </div>
+                <p></p>
                 <div className="columns">
                     <div className="column">
 
-
-                        <MapContainer center={[46.057, 14.5058]} zoom={13} scrollWheelZoom={false}>
+                        
+                        {!showModal && <MapContainer center={[46.057, 14.5058]} zoom={13} scrollWheelZoom={false}>
                             <TileLayer
                                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -36,12 +60,14 @@ function Map() {
                                     A pretty CSS3 popup. <br/> Easily customizable.
                                 </Popup>
                             </Marker>
-                        </MapContainer>
+                        </MapContainer>}
 
+                        {/* Modal */}
+                        {/* {showModal && <Modal show={showModal} location="Kino Šiška" name="Ogled Avatarja" time="20-22h" />} */}
+                        
+                        </div>
 
-                    </div>
-
-
+                    
                     <div className="column">
 
                         <ActivityDisplay
@@ -72,6 +98,8 @@ function Map() {
                         />
 
                     </div>
+
+                    
 
 
                 </div>
