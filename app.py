@@ -78,7 +78,9 @@ def rank_events(room_id):
 	attendants = room.users
 	calculate_rank(attendants)
 
-	return events_to_json(events)
+	ranked_events = sorted(events.values(), key=lambda x: x.score, reverse=True)
+
+	return str(ranked_events)
 
 @app.route("/organise/<room_id>/<event_id>", methods=['POST', 'GET'])
 def organize(room_id, event_id):
