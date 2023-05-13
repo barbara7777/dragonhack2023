@@ -40,6 +40,13 @@
 }
 
 .card {
-    border: 5px solid pink !important;;
-    border-radius: 20px !important;
+    /*border: 5px solid pink !important;*/
+    /*border-radius: 20px !important;*/
+}
+
+.isBest {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 200% 200%;
+    animation: gradient 4s ease infinite;
+    border-radius: 40px !important;
 }
