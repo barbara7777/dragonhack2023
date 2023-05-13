@@ -14,7 +14,6 @@ def room_to_json(room):
 def key_to_intkey(key):
 	return sum(map(ord, list(key)))
 
-
 @app.route('/cleanup')
 def cleanup():
 	for elt in os.listdir("static"):
