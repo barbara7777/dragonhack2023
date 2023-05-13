@@ -1,3 +1,6 @@
+import json
+
+
 class Event:
     id = 0
     title = ""
@@ -19,8 +22,10 @@ class Event:
         self.co2 = co2
 
     def __str__(self):
-        return self.id + self.title + " " + self.description + " " + self.date + " " + self.time + " " + self.location
+        return json.dumps(self.__dict__)
 
+    def __repr__(self):
+        return self.__str__()
 
 class Person:
     id = 0
@@ -43,7 +48,7 @@ class Person:
         self.hates = hates
 
     def __str__(self):
-        return str(self.id) + ": " +self.name + " " + self.email
+        return json.dumps(self.__dict__)
 
     def __repr__(self):
         return self.__str__()
@@ -134,6 +139,15 @@ event5 = Event(4,
 people = {0: person1, 1: person2, 2: person3, 3: person4}
 events = {0: event1, 1: event2, 2: event3, 3: event4, 4: event5}
 
+class PersonEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, Person):
+            # Convert Person instance to a dictionary
+            return {"name": obj.name, "age": obj.email}
+        return super().default(obj)
+
+
 
 if __name__ == '__main__':
-    print([person1])
+
+    print(person1)
