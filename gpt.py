@@ -41,13 +41,23 @@ def gpt_create_arrangement(num_people, party_type):
     return askgpt(prompt)
 
 
-def gpt_rate_peronal_liking(person, event):
+def gpt_rate_peronal_liking_foreach(person, event):
     likings = ", ".join(person.preferences)
-    hated = ", ".join(person.hated)
+    hated = ", ".join(person.hates)
 
     event_desc = event.name + ": " + event.description
     prompt = (f"Here is a person that likes {likings}, but hates {hated}." +
-        f"how much on a scale from 1 to 10 is he expected to enjoy this event: {event_desc}. Return only the number.")
+        f"how much on a scale from 1 to 10 is he expected to enjoy next activities: {event_desc}. Return only the number.")
+    return askgpt(prompt)
+
+
+def gpt_rate_personal_liking(event, people):
+    people_list = ""
+    for person in people:
+        people_list += person.name + "likes: " + ", ".join(person.preferences) + ". They hate " + ", ".join(person.hates)
+
+    event_descs = event.title + ": " + event.description
+    prompt = (f"Here is an event {event_descs} and a list of people and their likes and dislikes: {people_list}. How much on a scale from 1 to 10 is each person expected to enjoy the event? Return only the numbers.")
     return askgpt(prompt)
 
 

@@ -97,6 +97,8 @@ person4 = Person(3,
 				 ["horse riding", "cookies", "trampolines"],
 				 ["water"])
 
+# ----------------------------------------------------------------------
+
 event1 = Event(0,
 			   "Horse riding",
 			   "Horse riding in the forest",

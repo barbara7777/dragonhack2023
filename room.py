@@ -1,3 +1,4 @@
+from gpt import gpt_rate_personal_liking
 from travel import *
 from database import people, events
 
@@ -12,16 +13,30 @@ def calculate_carbon_footprint(users):
 	return event_carbon_footprints
 
 
-def calculate_rank(users):
+def calculate_rank(users, prod=False):
 	event_carbon_footprints = calculate_carbon_footprint(users)
 	rank = sorted(event_carbon_footprints.items(), key=lambda kv: kv[1])
 
 	together = 0
 	for event_id, value in rank:
-		events[event_id].score = value
+		events[event_id].score = 10 - np.log(value + 1)
 		together += value
 	for event in events.values():
-		event.score = event.score / together * 10
+		if prod:
+			answer = gpt_rate_personal_liking(event, users)
+			sc = [2 for _ in users]
+			if answer[0] == 1:
+				score = answer[1]
+				try:
+					sc = list(map(lambda x: int(x), score.split()))
+				except Exception:
+					sc = [5 for _ in users]
+		else:
+			# get a list of random integers between 1 and 10
+			sc = np.random.randint(1, 10, len(users))
+		event.score += sum(sc)
+		# event.score = event.score / together * 10
+
 	return events
 
 
