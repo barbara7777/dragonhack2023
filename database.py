@@ -142,5 +142,5 @@ event5 = Event(4,
 			   6,
 			   30)
 
-people = {0: person1, 1: person2, 2: person3, 3: person4}
-events = {0: event1, 1: event2, 2: event3, 3: event4, 4: event5}
+people = {person1.id: person1, person2.id: person2, person3.id: person3, person4.id: person4}
+events = {event1.id: event1, event2.id: event2, event3.id: event3, event4.id: event4, event5.id: event5}
