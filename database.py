@@ -53,7 +53,7 @@ person1 = Person(0,
                  "matic.hocevar@gmail.com",
                  "031 123 456",
                  ["monday", "tuesday", "friday"],
-                 "Ljubljana",
+                 "46.067100, 14.491936",
                  ["cinema", "hanging by the river"],
                  ["balls"])
 
@@ -62,7 +62,7 @@ person2 = Person(1,
                  "vilma1999@gmail.com",
                  "031 654 321",
                  ["friday", "saturday", "sunday"],
-                 "Ljubljana",
+                 "46.050547, 14.466705",
                  ["cookies", "disco", "zoo"],
                  ["horses"])
 
@@ -71,7 +71,7 @@ person3 = Person(2,
                  "majdi-unicorn37@gmail.com",
                  "031 123 456",
                  ["monday", "tuesday", "friday", "satuday", "sunday"],
-                 "Domžale",
+                 "46.036786, 14.488854",
                  ["horse riding", "hanging by the river", "cinema", "trampolines"],
                  ["disco", "heights"])
 
@@ -80,7 +80,7 @@ person4 = Person(3,
                  "bojan.razkrosi@hotmail.com",
                  "031 123 456",
                  ["monday", "tuesday", "wednesday", "satuday", "sunday"],
-                 "Kranj",
+                 "46.138015, 14.558444",
                  ["horse riding", "cookies", "trampolines"],
                  ["water"])
 
@@ -89,7 +89,7 @@ event1 = Event(0,
                "Horse riding in the forest",
                "monday",
                "12:00",
-               "Ljubljana",
+               "46.086078, 14.416741",
                5,
                6)
 
@@ -98,7 +98,7 @@ event2 = Event(1,
                "Let's meet by the Ljubljanica river and have a picnic.",
                "friday",
                "18:00",
-               "Ljubljana",
+               "46.041514, 14.513523",
                7,
                3)
 
@@ -107,7 +107,7 @@ event3 = Event(2,
                "Avatar 2",
                "wednesday",
                "20:00",
-               "Ljubljana",
+               "46.022171255080806, 14.536462000016206",
                8,
                8)
 
@@ -116,7 +116,7 @@ event4 = Event(3,
                "Let's get crazy. YOLO",
                "friday",
                "22:00",
-               "Ljubljana",
+               "46.05592740593597, 14.504080196029753",
                6,
                7)
 
@@ -125,7 +125,7 @@ event5 = Event(4,
                "Let's meet at my house and bake cookies",
                "saturday",
                "16:00",
-               "Domžale",
+               "46.067100, 14.491936",
                6,
                30)
 
