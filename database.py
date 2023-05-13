@@ -30,6 +30,7 @@ class Event:
 class Person:
     id = 0
     name = ""
+    image = ""
     email = ""
     phone = ""
     timetable = []
@@ -37,9 +38,10 @@ class Person:
     preferences = []
     hates = []
 
-    def __init__(self, id, name, email, phone, timetable, location, preferences, hates):
+    def __init__(self, id, name, img, email, phone, timetable, location, preferences, hates):
         self.id = id
         self.name = name
+        self.image = img
         self.email = email
         self.phone = phone
         self.timetable = timetable
@@ -57,6 +59,7 @@ class Person:
 
 person1 = Person(0,
                  "Matic",
+                 "person1.jpg",
                  "matic.hocevar@gmail.com",
                  "031 123 456",
                  ["monday", "tuesday", "friday"],
@@ -66,6 +69,7 @@ person1 = Person(0,
 
 person2 = Person(1,
                  "Vilma",
+                 "person5.jpg",
                  "vilma1999@gmail.com",
                  "031 654 321",
                  ["friday", "saturday", "sunday"],
@@ -75,6 +79,7 @@ person2 = Person(1,
 
 person3 = Person(2,
                  "Majda",
+                 "person3.jpg",
                  "majdi-unicorn37@gmail.com",
                  "031 123 456",
                  ["monday", "tuesday", "friday", "satuday", "sunday"],
@@ -84,6 +89,7 @@ person3 = Person(2,
 
 person4 = Person(3,
                  "Bojan",
+                 "person6.jpg",
                  "bojan.razkrosi@hotmail.com",
                  "031 123 456",
                  ["monday", "tuesday", "wednesday", "satuday", "sunday"],
