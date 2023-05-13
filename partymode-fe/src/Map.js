@@ -10,6 +10,11 @@ import {MapContainer, Marker, Popup, TileLayer} from "react-leaflet";
 function Map() {
     const [goHome, setGoHome] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    const markers = [
+        [46.06889, 14.48897, "Kino Šiška", "Morebitni komentar"],
+        [46.06467, 14.54863, "Woop", "Morebitni komentar"],
+        [46.071, 14.5322, "Pokopališče Žale", "Morebitni komentar"]
+    ];
 
 
     return (
@@ -18,7 +23,6 @@ function Map() {
             {
                 goHome && <Navigate to={"/"}/>
             }
-
 
             <div><h1 class="title is-1 has-text-white maintitle" onClick={() => {
                 setGoHome(true)
@@ -55,16 +59,15 @@ function Map() {
                                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                             />
-                            <Marker position={[51.505, -0.09]}>
+                            
+                            {markers.map((marker, index) => (
+                                <Marker key={index} position={[marker[0], marker[1], marker[2]]}>
                                 <Popup>
-                                    A pretty CSS3 popup. <br/> Easily customizable.
+                                  <p>{marker[2]} <br /> {marker[3]} </p>
                                 </Popup>
-                            </Marker>
+                              </Marker>
+                            ))}
                         </MapContainer>}
-
-                        {/* Modal */}
-                        {/* {showModal && <Modal show={showModal} location="Kino Šiška" name="Ogled Avatarja" time="20-22h" />} */}
-
                     </div>
 
 
@@ -109,13 +112,6 @@ function Map() {
                 </div>
 
             </div>
-
-
-            {/*<header className="App-header">*/}
-            {/*    <p>*/}
-            {/*        PartyMode*/}
-            {/*    </p>*/}
-            {/*</header>*/}
         </div>
     );
 }
