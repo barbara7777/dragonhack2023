@@ -63,6 +63,6 @@ def gpt_rate_personal_liking(event, people):
 
 if __name__ == "__main__":
     # print( gpt_create_invitation("Martin", "skydiving", "23.3.2024") )
-    status, result = gpt_create_arrangement(7, "skydiving")
-    print(result)
+    # status, result = gpt_create_arrangement(7, "skydiving")
+    # print(result)
 # print(askgpt("Kako se reče stvarem potrebnim za zabavo v angleščini?"))
