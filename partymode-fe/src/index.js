@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import Friends from "./Friends";
 import Map from "./Map";
+import Organize from "./Organize";
 
 
 
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
     {
         path: "/find",
         element: <Map />,
+    },
+    {
+        path: "/organize",
+        element: <Organize />,
     }
 ]);
 

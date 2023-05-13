@@ -7,9 +7,9 @@
 }
 
 /*on hover on card show link cursor*/
-.card:hover {
-    cursor: pointer;
-}
+/*.card:hover {*/
+/*    cursor: pointer;*/
+/*}*/
 
 .maintitle {
     /*color: white;*/
@@ -30,7 +30,7 @@
         background-position: 0% 50%;
     }
     50% {
-        background-position: 100% 50%;
+        background-position: 100% 20%;
     }
     100% {
         background-position: 0% 50%;
@@ -45,7 +45,7 @@
 }
 
 .isBest {
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background: linear-gradient(-20deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 200% 200%;
     animation: gradient 4s ease infinite;
     border-radius: 40px !important;
@@ -55,4 +55,13 @@
     width: 100wh;
     height: 70vh;
     border-radius: 30px;
+}
+
+.fancycolors {
+
+    background: linear-gradient(-20deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 200% 200%;
+    animation: gradient 4s ease infinite;
+    width: 100%;
+    margin-bottom: 12px;
 }

@@ -27,7 +27,7 @@ export default function ActivityDisplay({
                         <div className={"columns"}>
                             <div className={"column"}>
                                 <div className={`title is-5 ${isBest ? "has-text-white" : ""}`}>Score</div>
-                                <div className={`subtitle is-3 ${isBest ? "has-text-white" : ""}`}>{score}</div>
+                                <div className={`subtitle is-4 ${isBest ? "has-text-white" : ""}`}>{score}</div>
                             </div>
                             <div className={"column"}>
                                 <div className={`title is-5 ${isBest ? "has-text-white" : ""}`}>Carbon footprint</div>

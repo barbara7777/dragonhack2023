@@ -83,18 +83,18 @@ function Map() {
                             activityName={"Woop! Trampolin park"}
                             activityLocation={"Leskovškova 1a, Ljubljana"}
                             isBest={false}
-                            carbonFootprint={"0.5 kg CO2"}
+                            carbonFootprint={"5 kg CO2"}
                             openingHours={"8:00 - 19:00"}
                             score={"4.2"}
                         />
 
                         <ActivityDisplay
-                            activityName={"Woop! Trampolin park"}
-                            activityLocation={"Leskovškova 1a, Ljubljana"}
+                            activityName={"Pokopališče Žale"}
+                            activityLocation={"Jarška cesta 2, Ljubljana"}
                             isBest={false}
                             carbonFootprint={"0.5 kg CO2"}
-                            openingHours={"8:00 - 19:00"}
-                            score={"4.2"}
+                            openingHours={"5:00 - 21:00"}
+                            score={"2.2"}
                         />
 
                     </div>
