@@ -3,7 +3,6 @@ from secret import API_KEY, API_HOST
 import http.client
 import numpy as np
 
-
 def calculate_dist(person, event):
     loc1 = list(map(lambda  x: float(x), person.location.split(",")))
     loc2 = list(map(lambda  x: float(x), event.location.split(",")))
@@ -13,7 +12,6 @@ def calculate_dist(person, event):
     return 1.7 * dist
 
 def calculate_car_carbon_footprint(distance, prod=False):
-
     litres = distance * 6.5 / 100
     if prod:
         conn = http.client.HTTPSConnection("carbonfootprint1.p.rapidapi.com")
