@@ -1,6 +1,7 @@
 # save this as app.py
 from flask import Flask
 from flask import request
+from flask_cors import CORS, cross_origin
 
 from config import add_custom_description
 from database import *
@@ -10,6 +11,8 @@ import os
 from gpt import *
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 rooms_dict = { }
 
 def room_to_json(room):
@@ -22,16 +25,19 @@ def key_to_intkey(key):
 	return sum(map(ord, list(key)))
 
 @app.route('/event', methods=['POST', 'GET'])
+@cross_origin()
 def show_events():
 	return str(list(events.values()))
 
 @app.route('/cleanup')
+@cross_origin()
 def cleanup():
 	for elt in os.listdir("static"):
 		os.remove("static/" + elt)
 	return "OK"
 
 @app.route('/qr/<id>')
+@cross_origin()
 def qr_codes(id):
 	id = key_to_intkey(id)
 	#print("qr access {}".format(id))
@@ -39,15 +45,18 @@ def qr_codes(id):
 	return app.send_static_file(img_src)
 
 @app.route('/', methods=['POST', 'GET'])
+@cross_origin()
 def home():
 	#return app.send_static_file("index.html")
 	return redirect(url_for('static/index.html'))
 
 @app.route('/room', methods=['POST', 'GET'])
+@cross_origin()
 def show_rooms():
 	return str(rooms_dict)
 
 @app.route('/room/<room_id>/<user_id>')
+@cross_origin()
 def prijava(room_id, user_id):
 	try:
 		user_id = int(user_id)
@@ -75,6 +84,7 @@ def prijava(room_id, user_id):
 	return room_to_json(room)
 
 @app.route('/rank-events/<room_id>', methods=['POST', 'GET'])
+@cross_origin()
 def rank_events(room_id):
 	room_id = key_to_intkey(room_id)
 	if(room_id not in rooms_dict):
@@ -95,6 +105,7 @@ def rank_events(room_id):
 	return str(ranked_events)
 
 @app.route("/organize/<room_id>/<event_id>", methods=['POST', 'GET'])
+@cross_origin()
 def organize(room_id, event_id):
 	try:
 		room_id = key_to_intkey(room_id)
@@ -121,6 +132,7 @@ def organize(room_id, event_id):
 	return "{{ \"users\": {}, \"arrangements\": {}, \"event\": {} }}".format(room.users, result, event)
 
 @app.route("/invite/<room_id>/<event_id>/<user_id>", methods=['POST', 'GET'])
+@cross_origin()
 def invite(room_id, event_id, user_id):
 	try:
 		room_id = key_to_intkey(room_id)
