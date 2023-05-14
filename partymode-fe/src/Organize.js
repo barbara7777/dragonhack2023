@@ -12,28 +12,30 @@ function Organize() {
     const [supplies, setSupplies] = useState(null);
     const [eventt, setEvent] = useState(null);
 
+    const url = "http://127.0.0.1:5000/organize/1/0"
+
     useEffect(() => {
         getDetails()
-    })
+    }, [])
 
     const getDetails = async () => {
-        // const response = await fetch('http://localhost:8080/users');
-        // const data = await response.json();
-        const mockData = '{ "users": [{"id": 0, "name": "Matic", "image": "person1.jpg", "email": "matic.hocevar@gmail.com", "phone": "031 123 456", "timetable": ["monday", "tuesday", "friday"], "location": "46.067100, 14.491936", "preferences": ["cinema", "hanging by the river"], "hates": ["balls"]}, {"id": 1, "name": "Vilma", "image": "person5.jpg", "email": "vilma1999@gmail.com", "phone": "031 654 321", "timetable": ["friday", "saturday", "sunday"], "location": "46.050547, 14.466705", "preferences": ["cookies", "disco", "zoo"], "hates": ["horses"]}, {"id": 2, "name": "Majda", "image": "person3.jpg", "email": "majdi-unicorn37@gmail.com", "phone": "031 123 456", "timetable": ["monday", "tuesday", "friday", "satuday", "sunday"], "location": "46.036786, 14.488854", "preferences": ["horse riding", "hanging by the river", "cinema", "trampolines"], "hates": ["disco", "heights"]}, {"id": 3, "name": "Bojan", "image": "person6.jpg", "email": "bojan.razkrosi@hotmail.com", "phone": "031 123 456", "timetable": ["monday", "tuesday", "wednesday", "satuday", "sunday"], "location": "46.138015, 14.558444", "preferences": ["horse riding", "cookies", "trampolines"], "hates": ["water"]}], "arrangements": {\n' +
-            '  "tasks": {\n' +
-            '    "1": ["Send out invitations", "Help with decorations"],\n' +
-            '    "2": ["Choose the disco music playlist", "Set up the dance floor"],\n' +
-            '    "3": ["Organize party games", "Arrange for a disco ball"],\n' +
-            '    "4": ["Coordinate food and drink refreshments", "Help with clean up after the party"]\n' +
-            '  },\n' +
-            '  "supplies": {\n' +
-            '    "1": ["Invitations", "Decorations"],\n' +
-            '    "2": ["Music system", "Disco lights"],\n' +
-            '    "3": ["Game supplies", "Disco ball"],\n' +
-            '    "4": ["Food and drinks", "Disposable plates and cups"]\n' +
-            '  }\n' +
-            '}, "event": {"id": 3, "title": "Disco", "description": "Let\'s get crazy. YOLO", "date": "friday", "time": "22:00", "location": "46.05592740593597, 14.504080196029753", "score": 6, "co2": 17} }';
-        const data = JSON.parse(mockData);
+        const response = await fetch(url);
+        const data = await response.json();
+        // const mockData = '{ "users": [{"id": 0, "name": "Matic", "image": "person1.jpg", "email": "matic.hocevar@gmail.com", "phone": "031 123 456", "timetable": ["monday", "tuesday", "friday"], "location": "46.067100, 14.491936", "preferences": ["cinema", "hanging by the river"], "hates": ["balls"]}, {"id": 1, "name": "Vilma", "image": "person5.jpg", "email": "vilma1999@gmail.com", "phone": "031 654 321", "timetable": ["friday", "saturday", "sunday"], "location": "46.050547, 14.466705", "preferences": ["cookies", "disco", "zoo"], "hates": ["horses"]}, {"id": 2, "name": "Majda", "image": "person3.jpg", "email": "majdi-unicorn37@gmail.com", "phone": "031 123 456", "timetable": ["monday", "tuesday", "friday", "satuday", "sunday"], "location": "46.036786, 14.488854", "preferences": ["horse riding", "hanging by the river", "cinema", "trampolines"], "hates": ["disco", "heights"]}, {"id": 3, "name": "Bojan", "image": "person6.jpg", "email": "bojan.razkrosi@hotmail.com", "phone": "031 123 456", "timetable": ["monday", "tuesday", "wednesday", "satuday", "sunday"], "location": "46.138015, 14.558444", "preferences": ["horse riding", "cookies", "trampolines"], "hates": ["water"]}], "arrangements": {\n' +
+        //     '  "tasks": {\n' +
+        //     '    "1": ["Send out invitations", "Help with decorations"],\n' +
+        //     '    "2": ["Choose the disco music playlist", "Set up the dance floor"],\n' +
+        //     '    "3": ["Organize party games", "Arrange for a disco ball"],\n' +
+        //     '    "4": ["Coordinate food and drink refreshments", "Help with clean up after the party"]\n' +
+        //     '  },\n' +
+        //     '  "supplies": {\n' +
+        //     '    "1": ["Invitations", "Decorations"],\n' +
+        //     '    "2": ["Music system", "Disco lights"],\n' +
+        //     '    "3": ["Game supplies", "Disco ball"],\n' +
+        //     '    "4": ["Food and drinks", "Disposable plates and cups"]\n' +
+        //     '  }\n' +
+        //     '}, "event": {"id": 3, "title": "Disco", "description": "Let\'s get crazy. YOLO", "date": "friday", "time": "22:00", "location": "46.05592740593597, 14.504080196029753", "score": 6, "co2": 17} }';
+        // const data = JSON.parse(mockData);
         console.log(data);
         setUsers(data.users);
 
