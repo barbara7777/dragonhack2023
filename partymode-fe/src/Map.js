@@ -56,16 +56,34 @@ function Map() {
                             <button class="delete" aria-label="close" onClick={() => setShowModal(false)}></button>
                         </header>
                         <section class="modal-card-body">
-                            Best place for Avatar 2 to have your meet is at Kino Šiška at 20h.
-                            {/* <!-- Content ... --> */}
-                        </section>
-                        <footer class="modal-card-foot">
+                        <div class="content left-align" style={{ textAlign: 'left' }}>
+                    {/* <h1>Optimal event choice</h1> */}
+                    <p>Displaying three best event venues.</p>
+                    <h2>Top choice</h2>
+                    <p>
+                        The best choice for the venue of your event eventName1 is <strong>eventLocation1</strong> at <strong>eventTime1</strong>.
+                        This is because ...   
+                        </p>
+                        <blockquote>Do not forget to bring an umbrella in case of rain!</blockquote>                                   
+                    <h3>Second best choice</h3>
+                    <p>
+                    The best choice for the venue of your event eventName1 is <strong>eventLocation1</strong> at <strong>eventTime1</strong>.
+                    This is because ...   
+                    </p>
+                    <h3>Third best choice</h3>
+                    <p>
+                    The best choice for the venue of your event eventName1 is <strong>eventLocation1</strong> at <strong>eventTime1</strong>.
+                    This is because ...   
+                    </p>
+                    
+                    </div>
+                    </section>
+                    <footer class="modal-card-foot">
                             <button class="button is-success">Save changes</button>
                             <button class="button">Cancel</button>
                         </footer>
                     </div>
                 </div>
-                <p></p>
                 <div className="columns">
                     <div className="column">
 
