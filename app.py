@@ -11,6 +11,7 @@ import qrcode
 import os
 from gpt import *
 from config import *
+from secret import SENDGRID_API_KEY, SENDGRID_API_ENDPOINT
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -177,3 +178,35 @@ def invite(room_id, event_id, user_id):
 
 	return Response(result, mimetype='application/json')
 
+@app.route("/send-mails", methods=['POST'])
+@cross_origin()
+def send_email():
+	to_emails = request.form.get('emails')
+	emails = to_emails.split(',')
+
+	message = request.form.get('message')
+
+	headers = {
+		"Authorization": f"Bearer {SENDGRID_API_KEY}",
+		"Content-Type": "application/json"
+	}
+	payload = {
+		"personalizations": [
+			{
+				"to": emails,
+				"subject": "Come to our event!"
+			}
+		],
+		"content": [
+			{
+				"type": "text/plain",
+				"value": message
+			}
+		]
+	}
+	response = requests.post(SENDGRID_API_ENDPOINT, headers=headers, json=payload)
+	if response.status_code == 202:
+		return True
+	else:
+		print("Failed to send email.")
+		return False
