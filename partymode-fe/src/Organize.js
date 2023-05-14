@@ -11,6 +11,9 @@ function Organize() {
     const [tasks, setTasks] = useState(null);
     const [supplies, setSupplies] = useState(null);
     const [eventt, setEvent] = useState(null);
+    const [invitation, setInvitation] = useState(null);
+
+    const [showModal, setShowModal] = useState(false);
 
     const url = "http://127.0.0.1:5000/organize/1/0"
 
@@ -43,6 +46,7 @@ function Organize() {
         console.log(newSupplies)
         setEvent(data.event);
         console.log("event", data.event);
+        setInvitation(data.invitation);
     }
 
     return (
@@ -60,7 +64,11 @@ function Organize() {
                 <div className="columns">
                     <div className={"column"}>
 
-                        <button className="button is-large is-fullwidth invitebutton fancycolors" style={{borderRadius: "20px", fontWeight: "bold"}}>SEND INVITATIONS</button>
+                        <button
+                            className="button is-large is-fullwidth invitebutton fancycolors"
+                            style={{borderRadius: "20px", fontWeight: "bold"}}
+                            onClick={() => setShowModal(true)}
+                        >SEND INVITATIONS</button>
 
                         <div style={{minHeight: "20px"}}></div>
 
@@ -182,6 +190,47 @@ function Organize() {
             {/*    </p>*/}
             {/*</header>*/}
             <br /><br /><br />
+
+
+            <div className={`modal ${showModal ? "is-active" : ""}`}>
+                <div className="modal-background"></div>
+                <div className="modal-card" style={{borderRadius: "20px"}}>
+                    <section className="modal-card-body"  style={{padding: "40px"}}>
+                        <div className="content left-align" style={{textAlign: 'left'}}>
+                            <h1 className={"title is-3"}>📨 Send an invitational email</h1>
+                            <span className={"is-size-4"}>{invitation}</span>
+                            <div style={{minHeight:"20px"}}></div>
+                            <label className="checkbox">
+                                <input type="checkbox" />
+                                &nbsp;&nbsp;&nbsp;<span className={"is-size-5"}>Include the invitee's tasks in the email</span>
+                            </label>
+                            <div style={{minHeight:"10px"}}></div>
+                            <label className="checkbox">
+                                <input type="checkbox" />
+                                &nbsp;&nbsp;&nbsp;<span className={"is-size-5"}>Send a reminder on the day before the event</span>
+                            </label>
+                            <div style={{minHeight:"30px"}}></div>
+
+                            <div className={"columns"}>
+
+                                <div className={"column"}>
+                                    <button className="button is-medium is-fullwidth invitebutton fancycolors">Send invitation</button>
+                                </div>
+
+                                <div className={"column is-one-quarter"}>
+                                    <button className="button is-medium is-fullwidth">Edit</button>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+
+
         </div>
     );
 }

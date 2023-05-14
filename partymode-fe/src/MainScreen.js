@@ -76,7 +76,7 @@ function MainScreen({actual}) {
                                     <div className="card-content">
                                         <div style={{minHeight: "20px"}}></div>
                                         <div className={"is-size-4"}>Step {menu.step}</div>
-                                        <div className={"is-size-2"}>{menu.name}</div>
+                                        <div className={"is-size-2 has-text-weight-bold"}>{menu.name}</div>
                                         <div style={{minHeight: "20px"}}></div>
                                     </div>
                                 </div>
