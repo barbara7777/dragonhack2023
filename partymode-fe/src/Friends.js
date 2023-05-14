@@ -52,7 +52,8 @@ function Friends() {
                                                             <img className={"is-rounded"} src={"http://127.0.0.1:5000/static/" + user.image}/>
                                                         </figure>
                                                     </div>
-                                                    <br />
+                                                    {/*<br />*/}
+                                                    <div style={{minHeight: "10px"}}></div>
                                                     <div className={"is-justify-content-center is-flex"}>
                                                         <div className={"title is-4"}>{user.name}</div>
                                                     </div>

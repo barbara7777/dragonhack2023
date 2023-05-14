@@ -13,13 +13,33 @@ function Organize() {
     const [eventt, setEvent] = useState(null);
     const [invitation, setInvitation] = useState(null);
 
+    const [sentInvitation, setSentInvitation] = useState(false);
+
     const [showModal, setShowModal] = useState(false);
 
-    const url = "http://127.0.0.1:5000/organize/1/0"
+    const url = "http://127.0.0.1:5000/organize/1/4"
 
     useEffect(() => {
         getDetails()
     }, [])
+
+    const sendInvitation = async () => {
+        setSentInvitation(true);
+        // send invitation
+        // const response = await fetch(url, {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: {"invitation": invitation}
+        //     })
+        // const data = await response.json();
+    //     wait for 2 seconds
+        await new Promise(r => setTimeout(r, 3200));
+        setShowModal(false);
+        setSentInvitation(false);
+
+    }
 
     const getDetails = async () => {
         const response = await fetch(url);
@@ -195,7 +215,7 @@ function Organize() {
             <div className={`modal ${showModal ? "is-active" : ""}`}>
                 <div className="modal-background"></div>
                 <div className="modal-card" style={{borderRadius: "20px"}}>
-                    <section className="modal-card-body"  style={{padding: "40px"}}>
+                    <section className="modal-card-body" style={{padding: "40px"}}>
                         <div className="content left-align" style={{textAlign: 'left'}}>
                             <h1 className={"title is-3"}>📨 Send an invitational email</h1>
                             <span className={"is-size-4"}>{invitation}</span>
@@ -211,17 +231,17 @@ function Organize() {
                             </label>
                             <div style={{minHeight:"30px"}}></div>
 
-                            <div className={"columns"}>
+                            {!sentInvitation ? <div className={"columns"}>
 
                                 <div className={"column"}>
-                                    <button className="button is-medium is-fullwidth invitebutton fancycolors">Send invitation</button>
+                                    <button className="button is-medium is-fullwidth invitebutton fancycolors" onClick={sendInvitation}>Send invitation</button>
                                 </div>
 
                                 <div className={"column is-one-quarter"}>
                                     <button className="button is-medium is-fullwidth">Edit</button>
                                 </div>
 
-                            </div>
+                            </div> : <h1 className={"title is-4 has-text-centered"}>🚀 Invitation sent 🚀</h1>}
 
 
                         </div>

@@ -19,7 +19,7 @@ function Map() {
     const handleSaveChanges = () => {
         setShowModal(false);
         navigate('/organize'); // Redirect to /organize URL
-      };
+    };
 
     useEffect(() => {
         getMapDetails()
@@ -36,7 +36,7 @@ function Map() {
         }
         setMarkers(newMarkers);
         setEvents([data[0], data[1], data[2]]);
-        
+
     }
     // console.log(events[0])
 
@@ -58,64 +58,59 @@ function Map() {
                 {/*<button className="button is-primary is-large" onClick={() => setShowModal(true)}>Show Modal</button>*/}
                 <div class={`modal ${showModal ? "is-active" : ""}`}>
                     <div class="modal-background"></div>
-                    <div class="modal-card">
-                        <header class="modal-card-head">
-                            <p class="modal-card-title">Optimal choice</p>
-                            <button class="delete" aria-label="close" onClick={() => setShowModal(false)}></button>
-                        </header>
-                        <section class="modal-card-body">
-                        <div class="content left-align" style={{ textAlign: 'left' }}>
-                    {/* <h1>Optimal event choice</h1> */}
-                    <p>Displaying three best event venues.</p>
-                    <h2>Top choice</h2>
+                    <div className="modal-card" style={{borderRadius: "20px"}}>
+                        <section className="modal-card-body" style={{padding: "40px"}}>
+                            <h1 className={"title is-3"}>Optimal choice</h1>
+                            {/*<span className={"is-size-4"}>{invitation}</span>*/}
+                            <div class="content left-align" style={{textAlign: 'left'}}>
+                                {/* <h1>Optimal event choice</h1> */}
                                 <p>
-                                    
-                        The best choice for the venue of your event <strong>{events[0].title}</strong> is <strong>{events[0].address}</strong> at <strong>{events[0].time}</strong>.
-                                    <p>Event description:</p>
-                                    <blockquote>{ events[0].description }</blockquote>
-                                    
-                        </p>                                 
-                    <h3>Second best choice</h3>
-                    <p>
-                        The best choice for the venue of your event <strong>{events[1].title}</strong> is <strong>{events[1].address}</strong> at <strong>{events[1].time}</strong>.
-                                    <p>Event description:</p>
-                                    <blockquote>{ events[1].description }</blockquote>
-                                    
-                        </p>  
-                    <h3>Third best choice</h3>
-                    <p>
-                        The best choice for the venue of your event <strong>{events[2].title}</strong> is <strong>{events[2].address}</strong> at <strong>{events[2].time}</strong>.
-                                    <p>Event description:</p>
-                                    <blockquote>{ events[2].description }</blockquote>
-                                    
-                        </p>  
-                    
-                    </div>
-                    </section>
-                    <footer class="modal-card-foot">
-                        <button class="button is-success" onClick={handleSaveChanges}>Save and proceed</button>
-                        <button class="button" aria-label="close" onClick={() => setShowModal(false)}>Cancel</button>
-                        </footer>
+
+                                    The best choice for the venue of your
+                                    event is <strong>{events[0].title}</strong> and it is located <strong>{events[0].address}</strong>. The event should take place at <strong>{events[0].time}</strong>!
+                                    <h1 className={"title is-4"}>Event description:</h1>
+                                    <blockquote>{events[0].description}</blockquote>
+
+                                </p>
+
+
+                                <div className={"columns"}>
+                                    <div className={"column"}>
+                                        <button className="button is-fullwidth is-success" onClick={handleSaveChanges}>Save and proceed
+                                        </button>
+                                    </div>
+                                    <div className={"column"}>
+                                        <button className="button is-fullwidth" aria-label="close" onClick={() => setShowModal(false)}>Cancel
+                                        </button>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+                        </section>
                     </div>
                 </div>
                 <div className="columns">
                     <div className="column">
 
 
-                        {!showModal && markers !== null && <MapContainer center={[46.057, 14.5058]} zoom={13} scrollWheelZoom={false}>
-                            <TileLayer
-                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                            />
-                            
-                            {markers.map((marker, index) => (
-                                <Marker key={index} position={[marker[0], marker[1], marker[2]]}>
-                                <Popup>
-                                  <p>{marker[2]} <br /> {marker[3]} </p>
-                                </Popup>
-                              </Marker>
-                            ))}
-                        </MapContainer>}
+                        {!showModal && markers !== null &&
+                            <MapContainer center={[46.057, 14.5058]} zoom={13} scrollWheelZoom={false}>
+                                <TileLayer
+                                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                />
+
+                                {markers.map((marker, index) => (
+                                    <Marker key={index} position={[marker[0], marker[1], marker[2]]}>
+                                        <Popup>
+                                            <p>{marker[2]} <br/> {marker[3]} </p>
+                                        </Popup>
+                                    </Marker>
+                                ))}
+                            </MapContainer>}
                     </div>
 
 
