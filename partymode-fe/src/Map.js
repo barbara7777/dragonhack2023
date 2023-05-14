@@ -36,7 +36,9 @@ function Map() {
         }
         setMarkers(newMarkers);
         setEvents([data[0], data[1], data[2]]);
+        
     }
+    // console.log(events[0])
 
 
     return (
@@ -66,21 +68,27 @@ function Map() {
                     {/* <h1>Optimal event choice</h1> */}
                     <p>Displaying three best event venues.</p>
                     <h2>Top choice</h2>
-                    <p>
-                        The best choice for the venue of your event eventName1 is <strong>eventLocation1</strong> at <strong>eventTime1</strong>.
-                        This is because ...   
-                        </p>
-                        <blockquote>Do not forget to bring an umbrella in case of rain!</blockquote>                                   
+                                <p>
+                                    
+                        The best choice for the venue of your event <strong>{events[0].title}</strong> is <strong>{events[0].address}</strong> at <strong>{events[0].time}</strong>.
+                                    <p>Event description:</p>
+                                    <blockquote>{ events[0].description }</blockquote>
+                                    
+                        </p>                                 
                     <h3>Second best choice</h3>
                     <p>
-                    The best choice for the venue of your event eventName1 is <strong>eventLocation1</strong> at <strong>eventTime1</strong>.
-                    This is because ...   
-                    </p>
+                        The best choice for the venue of your event <strong>{events[1].title}</strong> is <strong>{events[1].address}</strong> at <strong>{events[1].time}</strong>.
+                                    <p>Event description:</p>
+                                    <blockquote>{ events[1].description }</blockquote>
+                                    
+                        </p>  
                     <h3>Third best choice</h3>
                     <p>
-                    The best choice for the venue of your event eventName1 is <strong>eventLocation1</strong> at <strong>eventTime1</strong>.
-                    This is because ...   
-                    </p>
+                        The best choice for the venue of your event <strong>{events[2].title}</strong> is <strong>{events[2].address}</strong> at <strong>{events[2].time}</strong>.
+                                    <p>Event description:</p>
+                                    <blockquote>{ events[2].description }</blockquote>
+                                    
+                        </p>  
                     
                     </div>
                     </section>
