@@ -113,20 +113,18 @@ def gpt_cached_arrangement():
 
 def gpt_cached_invitation():
 	#Vilma, Baking Party, 23.8.2023
-	return """Hey [Insert name],
-
-I'm throwing a Hanging by the River party this Friday and would love for you to join! Come unwind and have a fantastic time with friends while we soak in the soothing riverside ambiance. Save the date, and let's create some wonderful memories together by the river!
-
-Looking forward to seeing you,
-[Your Name]""".replace("\n", "\\n")
+	return """Dear [Insert name],\n\nYou're invited to a scrumptious Baking Party this Saturday! Get ready to mix, knead, and decorate as we create delectable treats together. Aprons on, whisk in hand - let's celebrate our friendship one tasty masterpiece at a time. Can't wait to see you!\n\nWarmest regards,""".replace("\n", "\\n")
 
 if __name__ == "__main__":
 	print("OK")
 
 	#status, result = gpt_create_arrangement(4, "Baking party")
 	#print(result)
+	
+	status, result = gpt_create_invitation("Baking party", "Saturday")
+	print(result)
 
-	print(gpt_cached_invitation())
+	#print(gpt_cached_invitation())
 
 	#not prod = True
 	#status, result = gpt_create_invitation("Vilma", "Baking Party", "23.8.2023")
