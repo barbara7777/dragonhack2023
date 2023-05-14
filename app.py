@@ -9,6 +9,7 @@ from room import *
 import qrcode
 import os
 from gpt import *
+from config import *
 
 app = Flask(__name__)
 cors = CORS(app)
@@ -78,9 +79,14 @@ def prijava(room_id, user_id):
 		rooms_dict[new_room.id] = new_room
 
 	room = rooms_dict[room_id]
+
+	if(not prod):
+		for u in list(people.values()):
+			room.users.append(u)
+
 	if(user not in room.users):
 		room.users.append(user)
-
+	
 	return room_to_json(room)
 
 @app.route('/rank-events/<room_id>', methods=['POST', 'GET'])
