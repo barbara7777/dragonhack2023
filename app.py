@@ -53,7 +53,7 @@ def home():
 @app.route('/room', methods=['POST', 'GET'])
 @cross_origin()
 def show_rooms():
-	return str(rooms_dict)
+	return "{{ \"rooms\" : {} }}".format(str(list(rooms_dict.values())))
 
 @app.route('/room/<room_id>/<user_id>')
 @cross_origin()
