@@ -59,10 +59,13 @@
 }
 
 .fancycolors {
-
     background: linear-gradient(-20deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 200% 200%;
     animation: gradient 4s ease infinite;
     width: 100%;
     margin-bottom: 12px;
+}
+
+.invitebutton {
+    color: white !important;
 }

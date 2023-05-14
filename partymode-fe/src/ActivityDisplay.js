@@ -9,7 +9,7 @@ export default function ActivityDisplay({
 
 
 
-    const notBestStyle = {margin: "100px !important"}
+    const notBestStyle = {margin: "100px !important", borderRadius: "0px !important"};
 
     if (!isBest) {
         return (

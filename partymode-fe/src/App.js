@@ -13,6 +13,10 @@ function App() {
         setGotoFriends(true);
     }
 
+    const notHLStyle = {
+        padding: "100px !important"
+    }
+
     const menus = [
         {
             step: 1,
@@ -36,6 +40,7 @@ function App() {
             }
         }
     ];
+
     return (
         <div className="App">
             {gotoFriends && <Navigate to={"/friends"}/>}
@@ -48,9 +53,26 @@ function App() {
 
                 <div className="columns">
                     {
-                        menus.map((menu) => (
-                            <div className="column">
-                                <div className="card" onClick={menu.onClick}>
+                        menus.map((menu) => {
+                            if (menu.step !== 1) {
+                                return <div className="column">
+                                    <div className={"container"} style={notHLStyle}>
+                                        <div className={`card ${menu.step === 1 ? "fancycolors invitebutton" : ""}`}
+                                             onClick={menu.onClick}>
+                                            <div className="card-content">
+                                                <div style={{minHeight: "20px"}}></div>
+                                                <div className={"is-size-4"}>Step {menu.step}</div>
+                                                <div className={"is-size-2"}>{menu.name}</div>
+                                                <div style={{minHeight: "20px"}}></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                            return <div className="column">
+                                <div className={`card ${menu.step === 1 ? "fancycolors invitebutton" : ""}`}
+                                     onClick={menu.onClick}>
                                     <div className="card-content">
                                         <div style={{minHeight: "20px"}}></div>
                                         <div className={"is-size-4"}>Step {menu.step}</div>
@@ -58,7 +80,8 @@ function App() {
                                         <div style={{minHeight: "20px"}}></div>
                                     </div>
                                 </div>
-                            </div>))
+                            </div>
+                        })
                     }
 
                 </div>
