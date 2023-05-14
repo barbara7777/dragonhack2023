@@ -16,7 +16,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 rooms_dict = { }
 
 def room_to_json(room):
-	return "{{ id : {}, users: {} }}\n".format(room.id, str(room.users))
+	return "{{ \"id\" : {}, \"users\": {} }}\n".format(room.id, str(room.users))
 
 def events_to_json(events):
 	return str(list(events.values()))
