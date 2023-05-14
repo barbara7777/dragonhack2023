@@ -45,7 +45,7 @@ function Map() {
         <div className="App">
             <br/><br/>
             {
-                goHome && <Navigate to={"/"}/>
+                goHome && <Navigate to={"/3"}/>
             }
 
             <div><h1 class="title is-1 has-text-white maintitle" onClick={() => {

@@ -28,7 +28,7 @@ function Friends() {
         <div className="App">
             <br/><br/>
             {
-                goHome && <Navigate to={"/"}/>
+                goHome && <Navigate to={"/2"}/>
             }
             <div><h1 class="title is-1 has-text-white maintitle" onClick={() => {
                 setGoHome(true)

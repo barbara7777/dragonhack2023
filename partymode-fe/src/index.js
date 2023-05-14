@@ -10,13 +10,22 @@ import {
 import Friends from "./Friends";
 import Map from "./Map";
 import Organize from "./Organize";
+import MainScreen from "./MainScreen";
 
 
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <App />,
+        element: <MainScreen actual={1} />,
+    },
+    {
+        path: "/2",
+        element: <MainScreen actual={2} />,
+    },
+    {
+        path: "/3",
+        element: <MainScreen actual={3} />,
     },
     {
         path: "/friends",
