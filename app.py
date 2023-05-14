@@ -82,7 +82,8 @@ def prijava(room_id, user_id):
 
 	if(not prod):
 		for u in list(people.values()):
-			room.users.append(u)
+			if(u not in room.users):
+				room.users.append(u)
 
 	if(user not in room.users):
 		room.users.append(user)
