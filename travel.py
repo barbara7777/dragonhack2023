@@ -1,6 +1,6 @@
 from config import prod
 from database import people, events
-from secret import API_KEY, API_HOST
+from secret import CARBON_FOOTPRINT_API_KEY, CARBON_FOOTPRINT_API_HOST
 import http.client
 import numpy as np
 
@@ -17,8 +17,8 @@ def calculate_car_carbon_footprint(distance):
     if prod:
         conn = http.client.HTTPSConnection("carbonfootprint1.p.rapidapi.com")
         headers = {
-            'X-RapidAPI-Key': API_KEY,
-            'X-RapidAPI-Host': API_HOST
+            'X-RapidAPI-Key': CARBON_FOOTPRINT_API_KEY,
+            'X-RapidAPI-Host': CARBON_FOOTPRINT_API_HOST
         }
         body = f"/FuelToCO2e?type=Petrol&litres={litres}"
         conn.request("GET", body, headers=headers)
