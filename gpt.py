@@ -21,7 +21,7 @@ def askgpt(prompt = "Write Haiku about Dragonhack"):
 
 		if response.ok:
 			#print(response.json()["choices"][0]["message"]["content"])
-			return (1, (response.json()["choices"][0]["message"]["content"]))
+			return (1, (response.json()["choices"][0]["message"]["content"]).replace("\n", "\\n"))
 	except:
 		pass
 	return (0, "Network error")
@@ -118,11 +118,15 @@ def gpt_cached_invitation():
 I'm throwing a Hanging by the River party this Friday and would love for you to join! Come unwind and have a fantastic time with friends while we soak in the soothing riverside ambiance. Save the date, and let's create some wonderful memories together by the river!
 
 Looking forward to seeing you,
-[Your Name]"""
+[Your Name]""".replace("\n", "\\n")
 
 if __name__ == "__main__":
-	status, result = gpt_create_arrangement(4, "Baking party")
-	print(result)
+	print("OK")
+
+	#status, result = gpt_create_arrangement(4, "Baking party")
+	#print(result)
+
+	print(gpt_cached_invitation())
 
 	#not prod = True
 	#status, result = gpt_create_invitation("Vilma", "Baking Party", "23.8.2023")
