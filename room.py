@@ -11,6 +11,7 @@ def calculate_carbon_footprint(users):
 			dist = calculate_dist(person, event)
 			footprint = calculate_car_carbon_footprint(dist)
 			event_carbon_footprints[event.id] = footprint
+			event.co2 += int(footprint)
 	return event_carbon_footprints
 
 
