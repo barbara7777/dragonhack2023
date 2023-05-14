@@ -8,16 +8,18 @@ class Event:
 	date = ""
 	time = ""
 	location = ""
+	address = ""
 	score = 0
 	co2 = 0  # in kg
 
-	def __init__(self, id, title, description, date, time, location, score, co2):
+	def __init__(self, id, title, description, date, time, location, address, score, co2):
 		self.id = id
 		self.title = title
 		self.description = description
 		self.date = date
 		self.time = time
 		self.location = location
+		self.address = address
 		self.score = score
 		self.co2 = co2
 
@@ -104,7 +106,8 @@ event1 = Event(0,
 			   "Saddle up for a thrilling Horse Riding event! 🐎 Matic, Majda, and Bojan, get ready to hang by the river and explore nature while riding these majestic creatures. Perfect for cinema lovers seeking an epic outdoor adventure and trampoline enthusiasts craving a new bounce. Vilma, we're sorry, but this one isn't for you due to your horse dislike. For the rest, RSVP and join us for an unforgettable ride. Giddy up! 🌳🐴",
 			   "Monday",
 			   "12:00",
-			   "46.086078, 14.416741",
+			   "46.04977584588178, 14.53270293852464",
+			   "Park Kodeljevo - Šport Ljubljana",
 			   5,
 			   6)
 
@@ -114,6 +117,7 @@ event2 = Event(1,
 			   "Friday",
 			   "18:00",
 			   "46.041514, 14.513523",
+			   "Ljubljanski botanični vrt",
 			   7,
 			   0)
 
@@ -123,6 +127,7 @@ event3 = Event(2,
 			   "Wednesday",
 			   "20:00",
 			   "46.022171255080806, 14.536462000016206",
+			   "Cineplexx Supernova Rudnik",
 			   8,
 			   8)
 
@@ -132,6 +137,7 @@ event4 = Event(3,
 			   "Friday",
 			   "22:00",
 			   "46.05592740593597, 14.504080196029753",
+			   "K4",
 			   6,
 			   17)
 
@@ -141,6 +147,7 @@ event5 = Event(4,
 			   "Saturday",
 			   "16:00",
 			   "46.067100, 14.491936",
+			   "Celovška cesta 99, 1000 Ljubljana",
 			   6,
 			   1)
 
