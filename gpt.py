@@ -1,4 +1,5 @@
 import requests
+from config import prod
 
 def askgpt(prompt = "Write Haiku about Dragonhack"):
 	#model = "gpt-3.5-turbo"
@@ -28,15 +29,9 @@ def askgpt(prompt = "Write Haiku about Dragonhack"):
 
 def gpt_create_invitation(name, party_type, date):
 	prompt = "Write {} a 40 to 60 word invitation for a {} party on {}. Don't write [Your name].".format(name, party_type, date)
-	#prompt = ("Napiši vabilo dolžine do 60 besed. {} je vabljenec." +
-	#	"Zabava ima tematiko {} in bo potekala na dan {}.").format(name, party_type, date)
 	return askgpt(prompt)
 
 def gpt_create_arrangement(num_people, party_type):
-##	prompt = ("We are organising a {} party. There will be {} guests. Make arrangement table of guests for tasks" +
-##		"and party supplies. Table should be in the following format: | Guest # | Supplies | Tasks |. Try to fix table alignment with adding spaces.").format(party_type, num_people)
-
-	#prompt = ("We are organising a {} party. There will be n = {} guests. Arrange tasks and party supplies between guests. Output must be in the following format: { [ tasks for guest 1 ] , ... , [ tasks for guest n ] }, { [ supplies guest 1 should bring ] , ... , [ supplies guest n should bring ] }").format(party_type, num_people)
 	prompt = ("We are organising a {} party. There will be n = {} guests. Arrange tasks and party supplies between guests."
 		+"Output must be in the following format: {{ \"tasks\":{{ \"1\": [ tasks for guest 1 ] , ... , \"n\": [ tasks for guest n ] }}, "
 		+ "\"supplies\":{{ \"1\": [ supplies guest 1 should bring ] , ... , \"n\": [ supplies guest n should bring ] }} }}"
@@ -77,7 +72,5 @@ def get_event_description(event, people):
 
 
 if __name__ == "__main__":
-    # print( gpt_create_invitation("Martin", "skydiving", "23.3.2024") )
     status, result = gpt_create_arrangement(7, "skydiving")
     print(result)
-# print(askgpt("Kako se reče stvarem potrebnim za zabavo v angleščini?"))
