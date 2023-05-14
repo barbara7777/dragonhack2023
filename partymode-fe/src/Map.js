@@ -1,7 +1,7 @@
 import './App.css';
 import 'bulma/css/bulma.min.css';
 import {useEffect, useState} from "react";
-import {Navigate} from "react-router-dom";
+import {Navigate, useNavigate} from "react-router-dom";
 import ActivityDisplay from "./ActivityDisplay";
 import {MapContainer, Marker, Popup, TileLayer} from "react-leaflet";
 
@@ -12,8 +12,14 @@ function Map() {
     const [showModal, setShowModal] = useState(false);
     const [events, setEvents] = useState(null);
     const [markers, setMarkers] = useState(null);
+    const navigate = useNavigate();
 
     const url = "http://127.0.0.1:5000/rank-events/1";
+
+    const handleSaveChanges = () => {
+        setShowModal(false);
+        navigate('/organize'); // Redirect to /organize URL
+      };
 
     useEffect(() => {
         getMapDetails()
@@ -56,16 +62,34 @@ function Map() {
                             <button class="delete" aria-label="close" onClick={() => setShowModal(false)}></button>
                         </header>
                         <section class="modal-card-body">
-                            Best place for Avatar 2 to have your meet is at Kino Šiška at 20h.
-                            {/* <!-- Content ... --> */}
-                        </section>
-                        <footer class="modal-card-foot">
-                            <button class="button is-success">Save changes</button>
-                            <button class="button">Cancel</button>
+                        <div class="content left-align" style={{ textAlign: 'left' }}>
+                    {/* <h1>Optimal event choice</h1> */}
+                    <p>Displaying three best event venues.</p>
+                    <h2>Top choice</h2>
+                    <p>
+                        The best choice for the venue of your event eventName1 is <strong>eventLocation1</strong> at <strong>eventTime1</strong>.
+                        This is because ...   
+                        </p>
+                        <blockquote>Do not forget to bring an umbrella in case of rain!</blockquote>                                   
+                    <h3>Second best choice</h3>
+                    <p>
+                    The best choice for the venue of your event eventName1 is <strong>eventLocation1</strong> at <strong>eventTime1</strong>.
+                    This is because ...   
+                    </p>
+                    <h3>Third best choice</h3>
+                    <p>
+                    The best choice for the venue of your event eventName1 is <strong>eventLocation1</strong> at <strong>eventTime1</strong>.
+                    This is because ...   
+                    </p>
+                    
+                    </div>
+                    </section>
+                    <footer class="modal-card-foot">
+                        <button class="button is-success" onClick={handleSaveChanges}>Save and proceed</button>
+                        <button class="button" aria-label="close" onClick={() => setShowModal(false)}>Cancel</button>
                         </footer>
                     </div>
                 </div>
-                <p></p>
                 <div className="columns">
                     <div className="column">
 

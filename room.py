@@ -34,7 +34,16 @@ def calculate_rank(users):
 					sc = [5 for _ in users]
 		else:
 			# get a list of random integers between 1 and 10
-			sc = np.random.randint(1, 10, len(users))
+			# sc = np.random.randint(1, 10, len(users))  # random liking score
+			if event.id == 4:
+				sc = [10 for _ in users]
+			elif event.id == 0:
+				sc = [7 for _ in users]
+			elif event.id == 1:
+				sc = [5 for _ in users]
+			else:
+				sc = [0 for _ in users]
+
 		event.score += 10 - event.co2
 		event.score += sum(sc)
 		# event.score = event.score / together * 10
