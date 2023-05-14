@@ -87,7 +87,7 @@ function Organize() {
                                 <h1 className={"title is-2"}>Your invited friends 😎</h1>
                                 <div className={"fancycolors"} style={{minHeight: "4px"}}></div>
                                 <div style={{minHeight: "10px"}}></div>
-                                <table className="table">
+                                <table className="table" style={{width: "100%"}}>
                                     <thead>
                                     <tr>
                                         <th>Name</th>
@@ -120,7 +120,7 @@ function Organize() {
                                 <h1 className={"title is-2"}>Stuff to bring 🎒</h1>
                                 <div className={"fancycolors"} style={{minHeight: "4px"}}></div>
                                 <div style={{minHeight: "10px"}}></div>
-                                <table className="table">
+                                <table className="table" style={{width: "100%"}}>
                                     <thead>
                                     <tr>
                                         <th>Assignee</th>
@@ -149,7 +149,7 @@ function Organize() {
                                 <h1 className={"title is-2"}>Tasks 📆</h1>
                                 <div className={"fancycolors"} style={{minHeight: "4px"}}></div>
                                 <div style={{minHeight: "10px"}}></div>
-                                <table className="table">
+                                <table className="table" style={{width: "100%"}}>
                                     <thead>
                                     <tr>
                                         <th>Assignee</th>
