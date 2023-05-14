@@ -24,12 +24,50 @@ function Friends() {
 
     return (
         <div className="App">
-<br /><br /><br />
+            <br/><br/><br/>
             {
-                goHome && <Navigate to={"/"} />
+                goHome && <Navigate to={"/"}/>
             }
-            <div><h1  class="title is-1 has-text-white maintitle" onClick={() => {setGoHome(true)}}>PartyMode</h1></div>
-            <br /><br /><br />
+            <div><h1 class="title is-1 has-text-white maintitle" onClick={() => {
+                setGoHome(true)
+            }}>PartyMode</h1></div>
+            <br/><br/><br/>
+
+            {/*<div className="container">*/}
+
+            {/*    {users.map((user) => (*/}
+            {/*        <>*/}
+            {/*            <div className="card">*/}
+            {/*                <div className="card-content">*/}
+            {/*                    <div className={"columns"}>*/}
+            {/*                        <div className={"column"}>*/}
+            {/*                            <div className={"is-justify-content-center is-flex"}>*/}
+            {/*                                <figure className="image is-128x128">*/}
+            {/*                                    <img src={"https://bulma.io/images/placeholders/128x128.png"}/>*/}
+            {/*                                </figure>*/}
+            {/*                            </div>*/}
+            {/*                            <br />*/}
+            {/*                            <div className={"is-justify-content-center is-flex"}>*/}
+            {/*                                <div className={"title is-3"}>{user.name}</div>*/}
+            {/*                            </div>*/}
+            {/*                            <div className={"is-justify-content-center is-flex"}>*/}
+            {/*                                <div className={"subtitle is-4 has-text-grey"}>Ljubljana</div>*/}
+            {/*                            </div>*/}
+            {/*                        </div>*/}
+            {/*                        <div className={"column is-size-4"}>{user.preferences}</div>*/}
+            {/*                        <div className={"column is-size-4"}>{user.hates}</div>*/}
+            {/*                        <div className={"column"}>*/}
+            {/*                            */}
+            {/*                        </div>*/}
+            {/*                    </div>*/}
+            {/*                </div>*/}
+            {/*            </div>*/}
+            {/*            <div style={{minHeight: "20px"}}></div>*/}
+            {/*        </>*/}
+            {/*    ))}*/}
+
+            {/*</div>*/}
+
             <div className="container">
 
                 <div className="columns">
@@ -39,7 +77,7 @@ function Friends() {
                         <div className="column">
                             <Friend
                                 name={user.name}
-                                location={user.location}
+                                location={"Ljubljana"}
                                 pictureLink={"https://bulma.io/images/placeholders/128x128.png"}
                                 likes={user.preferences}
                                 hates={user.hates}
@@ -48,81 +86,28 @@ function Friends() {
                     ))}
 
 
-
-                    {/*<div className="column">*/}
-                    {/*    <Friend name={"Gregor"} location={"Ljubljana"} pictureLink={"https://bulma.io/images/placeholders/128x128.png"}/>*/}
-                    {/*</div>*/}
-                    {/*<div className="column">*/}
-                    {/*    <Friend name={"Barbara"} location={"Ljubljana"} pictureLink={"https://bulma.io/images/placeholders/128x128.png"}/>*/}
-                    {/*</div>*/}
-                    {/*<div className="column">*/}
-                    {/*    <Friend name={"Benč"} location={"Ljubljana"} pictureLink={"https://bulma.io/images/placeholders/128x128.png"}/>*/}
-                    {/*</div>*/}
-                    {/*<div className="column">*/}
-                    {/*    <Friend name={"Evgenija"} location={"Ljubljana"} pictureLink={"https://bulma.io/images/placeholders/128x128.png"}/>*/}
-                    {/*</div>*/}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 </div>
                 <div className="columns">
+                    <div className="column is-one-quarter">
+                        {/*    insert image */}
+                        <figure className="image">
+                            <img
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/1200px-QR_code_for_mobile_English_Wikipedia.svg.png"
+                                alt="Placeholder image"/>
+                        </figure>
+                    </div>
+                    {/*Vertically and horizontally center the content with bulma class*/}
                     <div className="column">
-
-                        <div className="card">
-                            <div className="card-content">
-                                <div className="media">
-                                    <div className="media-left">
-                                    </div>
-                                    <div className="media-content">
-                                        <p className="title is-1" style={{"font-size": "500% !important"}}>Share the QR code with your friends</p>
-                                    </div>
-                                </div>
-
-                                <div className="content">
-                                </div>
-                            </div>
-                        </div>
+                        <div style={{minHeight: "120px"}}></div>
+                        <p className="title is-1" style={{"font-size": "500% !important"}}>Share the QR code with your
+                            friends</p>
 
                     </div>
-
-
-
-                    <div className="column">
-
-
-                    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
                 </div>
 
             </div>
-
-
 
 
             {/*<header className="App-header">*/}
