@@ -129,14 +129,16 @@ def organize(room_id, event_id):
 	event = events[event_id]
 
 	##mkay tu zdej ustvarimo seznam in razporeditve
-	status, result = gpt_create_arrangement(len(room.users), event.title)
+	status, arrangements = gpt_create_arrangement(len(room.users), event.title)
 	if(status != 1):
 		return "Opa, neki ni ok.\n"
-	
-	##return result
+	status, invitation = gpt_create_invitation(event.title, event.date)
+	if(status != 1):
+		return "Opa, neki ni ok.\n"
 
 	##naceloma je result zdej json z raporeditvami, zraven dodamo se kr vse podatke o sobi, tj. osebe
-	return "{{ \"users\": {}, \"arrangements\": {}, \"event\": {} }}".format(room.users, result, event)
+	return "{{ \"users\": {}, \"arrangements\": {}, \"event\": {}, \"invitation\":\"{}\" }}".format(
+		room.users, arrangements, event, invitation)
 
 @app.route("/invite/<room_id>/<event_id>/<user_id>", methods=['POST', 'GET'])
 @cross_origin()

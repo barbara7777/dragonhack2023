@@ -16,7 +16,7 @@ def askgpt(prompt = "Write Haiku about Dragonhack"):
 				 "model": model,
 				 "messages": [{"role": "user", "content": prompt}],
 			},
-			timeout=30
+			timeout=40
 		)
 
 		if response.ok:
@@ -26,8 +26,8 @@ def askgpt(prompt = "Write Haiku about Dragonhack"):
 		pass
 	return (0, "Network error")
 
-def gpt_create_invitation(name, party_type, date):
-	prompt = "Write {} a 40 to 60 word invitation for a {} party on {}. Don't write [Your name].".format(name, party_type, date)
+def gpt_create_invitation(party_type, date):
+	prompt = "Write {} a 40 to 60 word invitation for a {} party on {}. Don't write [Your name].".format("[Insert name]", party_type, date)
 	
 	if(not prod):
 		return (1, gpt_cached_invitation())
@@ -95,30 +95,34 @@ def gpt_cached_pesonal_likings():
 def gpt_cached_rates():
 	return ""
 def gpt_cached_arrangement():
-	#event 4, four persons
-    return """{ "users": [{"id": 1, "name": "Vilma", "image": "person5.jpg", "email": "vilma1999@gmail.com", "phone": "031 654 321", "timetable": ["friday", "saturday", "sunday"], "location": "46.050547, 14.466705", "preferences": ["cookies", "disco", "zoo"], "hates": ["horses"]}, {"id": 0, "name": "Matic", "image": "person1.jpg", "email": "matic.hocevar@gmail.com", "phone": "031 123 456", "timetable": ["monday", "tuesday", "friday"], "location": "46.067100, 14.491936", "preferences": ["cinema", "hanging by the river"], "hates": ["balls"]}, {"id": 2, "name": "Majda", "image": "person3.jpg", "email": "majdi-unicorn37@gmail.com", "phone": "031 123 456", "timetable": ["monday", "tuesday", "friday", "satuday", "sunday"], "location": "46.036786, 14.488854", "preferences": ["horse riding", "hanging by the river", "cinema", "trampolines"], "hates": ["disco", "heights"]}, {"id": 3, "name": "Bojan", "image": "person6.jpg", "email": "bojan.razkrosi@hotmail.com", "phone": "031 123 456", "timetable": ["monday", "tuesday", "wednesday", "satuday", "sunday"], "location": "46.138015, 14.558444", "preferences": ["horse riding", "cookies", "trampolines"], "hates": ["water"]}], "arrangements": {
+	#event 4, four persons //TODO tole je malo precec, vec kot bi moglo bit on bo enkrat treba poltem tud v frntendu popravit
+    return """{
     "tasks": {
-    "1": ["Prepare cookie dough", "Bake cookies"],
-    "2": ["Prepare cupcake batter", "Bake cupcakes"],
-    "3": ["Prepare brownie mix", "Bake brownies"],
-    "4": ["Prepare frosting", "Decorate baked goods"]
+        "1": ["Make the dough", "Preheat the oven"],
+        "2": ["Chop fruits for toppings", "Melt chocolate"],
+        "3": ["Whip cream", "Prepare icing"],
+        "4": ["Decorate the baked goods", "Assist in clean up"]
     },
     "supplies": {
-    "1": ["Cookie mix", "Baking sheet", "Mixing bowl"],
-    "2": ["Cupcake mix", "Cupcake liners", "Muffin tin"],
-    "3": ["Brownie mix", "Square baking pan", "Mixing bowl"],
-    "4": ["Frosting", "Sprinkles", "Piping bags and tips"]
+        "1": ["Flour", "Yeast", "Sugar", "Measuring cups"],
+        "2": ["Fruits", "Chocolate bar", "Cutting board"],
+        "3": ["Heavy cream", "Icing sugar", "Whisk"],
+        "4": ["Sprinkles", "Edible decorations", "Disposable plates"]
     }
-    }, "event": {"id": 4, "title": "Baking Party", "description": "Join us for a delicious Baking Party extravaganza! If you're into cinema, hanging by the river, cookies, disco, horse riding, trampolines or the zoo, this event is perfect for you. Matic, Vilma, Majda, and Bojan are excited to whip up a storm of scrumptious treats to tease your taste buds. Don't worry - there won't be any balls or horses involved, just plenty of fun and laughing as you create your masterpieces. So come along, tap into your inner baker, and let's create some dough-lightful memories together! Don't miss out, book your spot now! 🎂🍪🎉", "date": "Saturday", "time": "16:00", "location": "46.067100, 14.491936", "score": 21.92579613682883, "co2": 1} }"""
+}"""
 
 def gpt_cached_invitation():
 	#Vilma, Baking Party, 23.8.2023
-	return """Hey Vilma! You're invited to a fabulous Baking Party on August 23rd, 2023! Get ready to flaunt your culinary skills and indulge in mouth-watering treats. Bring your favorite recipe and join us for a day of mixing, baking, and tasting. Don't miss out on the delicious fun!"""
+	return """Hey [Insert name],
 
+I'm throwing a Hanging by the River party this Friday and would love for you to join! Come unwind and have a fantastic time with friends while we soak in the soothing riverside ambiance. Save the date, and let's create some wonderful memories together by the river!
 
-# if __name__ == "__main__":
-	#status, result = gpt_create_arrangement(7, "skydiving")
-	#print(result)
+Looking forward to seeing you,
+[Your Name]"""
+
+if __name__ == "__main__":
+	status, result = gpt_create_arrangement(4, "Baking party")
+	print(result)
 
 	#not prod = True
 	#status, result = gpt_create_invitation("Vilma", "Baking Party", "23.8.2023")
