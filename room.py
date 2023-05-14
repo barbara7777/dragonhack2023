@@ -46,7 +46,7 @@ def calculate_rank(users):
 				sc = [0 for _ in users]
 
 		event.score += 10 - event.co2
-		event.score += sum(sc)
+		event.score += sum(sc) * 10
 		# event.score = event.score / together * 10
 
 	return events
