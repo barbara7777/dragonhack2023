@@ -1,3 +1,4 @@
+from config import prod
 from database import people, events
 from secret import API_KEY, API_HOST
 import http.client
@@ -11,7 +12,7 @@ def calculate_dist(person, event):
     dist = np.sqrt((loc1[0] - loc2[0]) ** 2 + (loc1[1] - loc2[1]) ** 2)
     return 1.7 * dist
 
-def calculate_car_carbon_footprint(distance, prod=False):
+def calculate_car_carbon_footprint(distance):
     litres = distance * 6.5 / 100
     if prod:
         conn = http.client.HTTPSConnection("carbonfootprint1.p.rapidapi.com")

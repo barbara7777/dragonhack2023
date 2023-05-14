@@ -1,6 +1,7 @@
 from gpt import gpt_rate_personal_liking
 from travel import *
 from database import people, events
+from config import prod
 
 def calculate_carbon_footprint(users):
 	event_carbon_footprints = {}
@@ -13,7 +14,7 @@ def calculate_carbon_footprint(users):
 	return event_carbon_footprints
 
 
-def calculate_rank(users, prod=False):
+def calculate_rank(users):
 	event_carbon_footprints = calculate_carbon_footprint(users)
 	rank = sorted(event_carbon_footprints.items(), key=lambda kv: kv[1])
 

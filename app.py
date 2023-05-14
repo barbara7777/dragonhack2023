@@ -1,6 +1,8 @@
 # save this as app.py
 from flask import Flask
 from flask import request
+
+from config import add_custom_description
 from database import *
 from room import *
 import qrcode
@@ -79,6 +81,12 @@ def rank_events(room_id):
 	calculate_rank(attendants)
 
 	ranked_events = sorted(events.values(), key=lambda x: x.score, reverse=True)
+
+	if add_custom_description:
+		for evnt in ranked_events[:3]:
+			desc = get_event_description(evnt, attendants)
+			if desc[0] == 1:
+				evnt.description = desc[1]
 
 	return str(ranked_events)
 

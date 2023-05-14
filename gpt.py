@@ -65,6 +65,17 @@ def gpt_rate_personal_liking(event, people):
     return askgpt(prompt)
 
 
+def get_event_description(event, people):
+    people_des = ""
+    for person in people:
+        likes = ",".join(person.preferences)
+        hates = ",".join(person.hates)
+        people_des += f"{person} that likes {likes} but hates {hates}.\n"
+    ans = askgpt(
+        f"please write short fun description of next event: {event.title} and reasons why next people will like it and should attend: {people_des}. Please keep it short.")
+    return ans
+
+
 if __name__ == "__main__":
     # print( gpt_create_invitation("Martin", "skydiving", "23.3.2024") )
     status, result = gpt_create_arrangement(7, "skydiving")
