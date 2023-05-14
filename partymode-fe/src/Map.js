@@ -1,7 +1,7 @@
 import './App.css';
 import 'bulma/css/bulma.min.css';
 import {useEffect, useState} from "react";
-import {Navigate} from "react-router-dom";
+import {Navigate, useNavigate} from "react-router-dom";
 import ActivityDisplay from "./ActivityDisplay";
 import {MapContainer, Marker, Popup, TileLayer} from "react-leaflet";
 
@@ -12,8 +12,14 @@ function Map() {
     const [showModal, setShowModal] = useState(false);
     const [events, setEvents] = useState(null);
     const [markers, setMarkers] = useState(null);
+    const navigate = useNavigate();
 
     const url = "http://127.0.0.1:5000/rank-events/1";
+
+    const handleSaveChanges = () => {
+        setShowModal(false);
+        navigate('/organize'); // Redirect to /organize URL
+      };
 
     useEffect(() => {
         getMapDetails()
@@ -79,8 +85,8 @@ function Map() {
                     </div>
                     </section>
                     <footer class="modal-card-foot">
-                            <button class="button is-success">Save changes</button>
-                            <button class="button">Cancel</button>
+                        <button class="button is-success" onClick={handleSaveChanges}>Save and proceed</button>
+                        <button class="button" aria-label="close" onClick={() => setShowModal(false)}>Cancel</button>
                         </footer>
                     </div>
                 </div>
