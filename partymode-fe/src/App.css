@@ -22,7 +22,8 @@
     letter-spacing: 0.35rem;
     /*all caps*/
     font-variant: small-caps;
-    font-size: 450% !important;
+    font-size: 600% !important;
+    font-family: Sniglet;
 }
 
 @keyframes gradient {
