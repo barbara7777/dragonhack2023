@@ -40,20 +40,24 @@ def qr_codes(id):
 
 @app.route('/', methods=['POST', 'GET'])
 def home():
-	return "<button>Ustvari sobo</button>"
+	#return app.send_static_file("index.html")
+	return redirect(url_for('static/index.html'))
 
 @app.route('/room', methods=['POST', 'GET'])
 def show_rooms():
 	return str(rooms_dict)
 
-@app.route('/room/<room_id>', methods=['POST', 'GET'])
-def prijava(room_id):
-	room_id = key_to_intkey(room_id)
-
-	if "user" not in request.form:
+@app.route('/room/<room_id>/<user_id>')
+def prijava(room_id, user_id):
+	try:
+		user_id = int(user_id)
+	except:
 		return "Invalid user"
-	user_id = int(request.form["user"])
+	if(user_id >= len(people)):
+		return "Invalid user"
+
 	user = people[user_id]
+	room_id = key_to_intkey(room_id)
 
 	#ce soba ne obstaja jo naredi
 	if(room_id not in rooms_dict):
@@ -116,8 +120,8 @@ def organize(room_id, event_id):
 	##naceloma je result zdej json z raporeditvami, zraven dodamo se kr vse podatke o sobi, tj. osebe
 	return "{{ \"users\": {}, \"arrangements\": {}, \"event\": {} }}".format(room.users, result, event)
 
-@app.route("/invite/<room_id>/<event_id>", methods=['POST', 'GET'])
-def invite(room_id, event_id):
+@app.route("/invite/<room_id>/<event_id>/<user_id>", methods=['POST', 'GET'])
+def invite(room_id, event_id, user_id):
 	try:
 		room_id = key_to_intkey(room_id)
 		event_id = int(event_id)
@@ -128,12 +132,14 @@ def invite(room_id, event_id):
 		return "Invalid room"
 	if(event_id >= len(events)):
 		return "Invalid event"
-
-	if "user" not in request.form:
+	try:
+		user_id = int(user_id)
+	except:
 		return "Invalid user"
-	user_id = int(request.form["user"])
-	user = people[user_id]
+	if(user_id >= len(people)):
+		return "Invalid user"
 
+	user = people[user_id]
 	room = rooms_dict[room_id]
 	event = events[event_id]
 
@@ -141,5 +147,4 @@ def invite(room_id, event_id):
 	if(status != 1):
 		return "Opa, neki ni ok.\n"
 	return result
-
 
