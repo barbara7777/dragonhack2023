@@ -2,6 +2,7 @@
 from flask import Flask
 from flask import request
 from flask_cors import CORS, cross_origin
+from flask import Response
 
 from config import add_custom_description
 from database import *
@@ -28,7 +29,8 @@ def key_to_intkey(key):
 @app.route('/event', methods=['POST', 'GET'])
 @cross_origin()
 def show_events():
-	return str(list(events.values()))
+	result = str(list(events.values()))
+	return Response(result, mimetype='application/json')
 
 @app.route('/cleanup')
 @cross_origin()
@@ -54,7 +56,8 @@ def home():
 @app.route('/room', methods=['POST', 'GET'])
 @cross_origin()
 def show_rooms():
-	return "{{ \"rooms\" : {} }}".format(str(list(rooms_dict.values())))
+	result = "{{ \"rooms\" : {} }}".format(str(list(rooms_dict.values())))
+	return Response(result, mimetype='application/json')
 
 @app.route('/room/<room_id>/<user_id>')
 @cross_origin()
@@ -88,7 +91,8 @@ def prijava(room_id, user_id):
 	if(user not in room.users):
 		room.users.append(user)
 	
-	return room_to_json(room)
+	result = room_to_json(room)
+	return Response(result, mimetype='application/json')
 
 @app.route('/rank-events/<room_id>', methods=['POST', 'GET'])
 @cross_origin()
@@ -109,7 +113,8 @@ def rank_events(room_id):
 			if desc[0] == 1:
 				evnt.description = desc[1]
 
-	return str(ranked_events)
+	result = str(ranked_events)
+	return Response(result, mimetype='application/json')
 
 @app.route("/organize/<room_id>/<event_id>", methods=['POST', 'GET'])
 @cross_origin()
@@ -137,8 +142,10 @@ def organize(room_id, event_id):
 		return "Opa, neki ni ok.\n"
 
 	##naceloma je result zdej json z raporeditvami, zraven dodamo se kr vse podatke o sobi, tj. osebe
-	return "{{ \"users\": {}, \"arrangements\": {}, \"event\": {}, \"invitation\":\"{}\" }}".format(
+	result = "{{ \"users\": {}, \"arrangements\": {}, \"event\": {}, \"invitation\":\"{}\" }}".format(
 		room.users, arrangements, event, invitation)
+	
+	return Response(result, mimetype='application/json')
 
 @app.route("/invite/<room_id>/<event_id>/<user_id>", methods=['POST', 'GET'])
 @cross_origin()
@@ -167,5 +174,6 @@ def invite(room_id, event_id, user_id):
 	status, result = gpt_create_invitation(user.name, event.title, event.date)
 	if(status != 1):
 		return "Opa, neki ni ok.\n"
-	return result
+
+	return Response(result, mimetype='application/json')
 
