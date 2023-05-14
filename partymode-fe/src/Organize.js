@@ -21,42 +21,28 @@ function Organize() {
     const getDetails = async () => {
         const response = await fetch(url);
         const data = await response.json();
-        // const mockData = '{ "users": [{"id": 0, "name": "Matic", "image": "person1.jpg", "email": "matic.hocevar@gmail.com", "phone": "031 123 456", "timetable": ["monday", "tuesday", "friday"], "location": "46.067100, 14.491936", "preferences": ["cinema", "hanging by the river"], "hates": ["balls"]}, {"id": 1, "name": "Vilma", "image": "person5.jpg", "email": "vilma1999@gmail.com", "phone": "031 654 321", "timetable": ["friday", "saturday", "sunday"], "location": "46.050547, 14.466705", "preferences": ["cookies", "disco", "zoo"], "hates": ["horses"]}, {"id": 2, "name": "Majda", "image": "person3.jpg", "email": "majdi-unicorn37@gmail.com", "phone": "031 123 456", "timetable": ["monday", "tuesday", "friday", "satuday", "sunday"], "location": "46.036786, 14.488854", "preferences": ["horse riding", "hanging by the river", "cinema", "trampolines"], "hates": ["disco", "heights"]}, {"id": 3, "name": "Bojan", "image": "person6.jpg", "email": "bojan.razkrosi@hotmail.com", "phone": "031 123 456", "timetable": ["monday", "tuesday", "wednesday", "satuday", "sunday"], "location": "46.138015, 14.558444", "preferences": ["horse riding", "cookies", "trampolines"], "hates": ["water"]}], "arrangements": {\n' +
-        //     '  "tasks": {\n' +
-        //     '    "1": ["Send out invitations", "Help with decorations"],\n' +
-        //     '    "2": ["Choose the disco music playlist", "Set up the dance floor"],\n' +
-        //     '    "3": ["Organize party games", "Arrange for a disco ball"],\n' +
-        //     '    "4": ["Coordinate food and drink refreshments", "Help with clean up after the party"]\n' +
-        //     '  },\n' +
-        //     '  "supplies": {\n' +
-        //     '    "1": ["Invitations", "Decorations"],\n' +
-        //     '    "2": ["Music system", "Disco lights"],\n' +
-        //     '    "3": ["Game supplies", "Disco ball"],\n' +
-        //     '    "4": ["Food and drinks", "Disposable plates and cups"]\n' +
-        //     '  }\n' +
-        //     '}, "event": {"id": 3, "title": "Disco", "description": "Let\'s get crazy. YOLO", "date": "friday", "time": "22:00", "location": "46.05592740593597, 14.504080196029753", "score": 6, "co2": 17} }';
-        // const data = JSON.parse(mockData);
-        console.log(data);
+        console.log("data", data);
         setUsers(data.users);
 
         var newTasks = [];
-        for (var key in data.arrangements.arrangements.tasks) {
-            for (var taskKey in data.arrangements.arrangements.tasks[key]) {
-                newTasks.push([key, data.arrangements.arrangements.tasks[key][taskKey]]);
+        for (var key in data.arrangements.tasks) {
+            for (var taskKey in data.arrangements.tasks[key]) {
+                newTasks.push([key, data.arrangements.tasks[key][taskKey]]);
             }
         }
         setTasks(newTasks);
 
         var newSupplies = [];
-        for (var key in data.arrangements.arrangements.supplies) {
+        for (var key in data.arrangements.supplies) {
             // for each item in the array
-            for (const supplyKey in data.arrangements.arrangements.supplies[key]) {
-                newSupplies.push([key, data.arrangements.arrangements.supplies[key][supplyKey]]);
+            for (const supplyKey in data.arrangements.supplies[key]) {
+                newSupplies.push([key, data.arrangements.supplies[key][supplyKey]]);
             }
         }
         setSupplies(newSupplies);
         console.log(newSupplies)
         setEvent(data.event);
+        console.log("event", data.event);
     }
 
     return (
@@ -73,6 +59,12 @@ function Organize() {
 
                 <div className="columns">
                     <div className={"column"}>
+
+                        <button className="button is-large is-fullwidth invitebutton fancycolors" style={{borderRadius: "20px", fontWeight: "bold"}}>SEND INVITATIONS</button>
+
+                        <div style={{minHeight: "20px"}}></div>
+
+
                         <div className={"card"}>
                             <div className={"card-content"}>
                                 <h1 className={"title is-2"}>🪅 Event Details 🪩</h1>
@@ -87,16 +79,46 @@ function Organize() {
 
                         <div className={"card"}>
                             <div className={"card-content"}>
+                                <h1 className={"title is-2"}>Stuff to bring 🎒</h1>
+                                <div className={"fancycolors"} style={{minHeight: "4px"}}></div>
+                                <div style={{minHeight: "10px"}}></div>
+                                <table className="table" style={{width: "100%"}}>
+                                    <thead>
+                                    <tr>
+                                        <th className="has-text-centered">Assignee</th>
+                                        <th className="has-text-centered">What they'll bring</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {
+                                        supplies.map((supply) => (
+                                            <tr>
+                                                <td>{users[supply[0] - 1].name}</td>
+                                                <td>{supply[1]}</td>
+                                            </tr>
+                                        ))
+                                    }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div className="column">
+
+                        <div className={"card"}>
+                            <div className={"card-content"}>
                                 <h1 className={"title is-2"}>Your invited friends 😎</h1>
                                 <div className={"fancycolors"} style={{minHeight: "4px"}}></div>
                                 <div style={{minHeight: "10px"}}></div>
                                 <table className="table" style={{width: "100%"}}>
                                     <thead>
                                     <tr>
-                                        <th class="has-text-centered">Name</th>
-                                        <th class="has-text-centered">E-mail</th>
-                                        <th class="has-text-centered">Phone Number</th>
-                                        <th class="has-text-centered">Location</th>
+                                        <th className="has-text-centered">Name</th>
+                                        <th className="has-text-centered">E-mail</th>
+                                        <th className="has-text-centered">Phone Number</th>
+                                        <th className="has-text-centered">Location</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -114,35 +136,8 @@ function Organize() {
                                 </table>
                             </div>
                         </div>
-                    </div>
 
-                    <div className="column">
 
-                        <div className={"card"}>
-                            <div className={"card-content"}>
-                                <h1 className={"title is-2"}>Stuff to bring 🎒</h1>
-                                <div className={"fancycolors"} style={{minHeight: "4px"}}></div>
-                                <div style={{minHeight: "10px"}}></div>
-                                <table className="table" style={{width: "100%"}}>
-                                    <thead>
-                                    <tr>
-                                        <th class="has-text-centered">Assignee</th>
-                                        <th class="has-text-centered">What they'll bring</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {
-                                        supplies.map((supply) => (
-                                            <tr>
-                                                <td>{users[supply[0] - 1].name}</td>
-                                                <td>{supply[1]}</td>
-                                            </tr>
-                                        ))
-                                    }
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
 
 
                         <div style={{minHeight: "20px"}}></div>

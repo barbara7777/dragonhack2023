@@ -125,7 +125,7 @@ function Map() {
                         }}>
                             <ActivityDisplay
                                 activityName={events[0].title}
-                                activityLocation={events[0].location}
+                                activityLocation={events[0].address}
                                 isBest={true}
                                 carbonFootprint={events[0].co2 + " kg CO2"}
                                 openingHours={events[0].time}
@@ -136,7 +136,7 @@ function Map() {
                         }}>
                             <ActivityDisplay
                                 activityName={events[1].title}
-                                activityLocation={events[1].location}
+                                activityLocation={events[1].address}
                                 isBest={false}
                                 carbonFootprint={events[1].co2 + " kg CO2"}
                                 openingHours={events[1].time}
@@ -147,7 +147,7 @@ function Map() {
                         }}>
                             <ActivityDisplay
                                 activityName={events[2].title}
-                                activityLocation={events[2].location}
+                                activityLocation={events[2].address}
                                 isBest={false}
                                 carbonFootprint={events[2].co2 + " kg CO2"}
                                 openingHours={events[2].time}
