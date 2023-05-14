@@ -41,8 +41,8 @@ function App() {
             {gotoFriends && <Navigate to={"/friends"}/>}
             {gotoMap && <Navigate to={"/find"}/>}
             {gotoOrganize && <Navigate to={"/organize"}/>}
-            <br/><br/><br/>
-            <div><h1 class="title is-1 has-text-white maintitle">PartyMode</h1></div>
+            <br/><br/>
+            <div><h1 class="title is-1 has-text-white maintitle">PARTY MODE</h1></div>
             <br/><br/><br/>
             <div className="container">
 

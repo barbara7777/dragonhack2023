@@ -19,14 +19,14 @@ function Map() {
 
     return (
         <div className="App">
-            <br/><br/><br/>
+            <br/><br/>
             {
                 goHome && <Navigate to={"/"}/>
             }
 
             <div><h1 class="title is-1 has-text-white maintitle" onClick={() => {
                 setGoHome(true)
-            }}>PartyMode</h1></div>
+            }}>PARTY MODE</h1></div>
             <br/><br/><br/>
 
 
