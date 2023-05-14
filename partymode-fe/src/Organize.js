@@ -77,7 +77,7 @@ function Organize() {
             }
             <div><h1 class="title is-1 has-text-white maintitle" onClick={() => {
                 setGoHome(true)
-            }}>PARTY MODE</h1></div>
+            }}>MEETHUB</h1></div>
             <br/><br/><br/>
             {eventt !== null && <div className="container">
 

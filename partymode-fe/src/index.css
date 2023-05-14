@@ -8,7 +8,7 @@ body {
 
   background-color: #ffffff;
   opacity: 1;
-  background: radial-gradient(circle, transparent 20%, #ffffff 20%, #ffffff 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #ffffff 20%, #ffffff 80%, transparent 80%, transparent) 40px 40px, linear-gradient(#ffedb1 3.2px, transparent 3.2px) 0 -1.6px, linear-gradient(90deg, #ffedb1 3.2px, #ffffff 3.2px) -1.6px 0;
+  background: radial-gradient(circle, transparent 20%, #ffffff 20%, #ffffff 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #ffffff 20%, #ffffff 80%, transparent 80%, transparent) 40px 40px, linear-gradient(#ffedb1 3.2px, transparent 3.2px) 0 -1.6px, linear-gradient(90deg, #ffedb1 3.2px, #ffffff 3.2px) -1.6px 0 repeat;
   background-size: 80px 80px, 80px 80px, 40px 40px, 40px 40px;
 }
 
