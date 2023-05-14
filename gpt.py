@@ -29,7 +29,7 @@ def askgpt(prompt = "Write Haiku about Dragonhack"):
 def gpt_create_invitation(name, party_type, date):
 	prompt = "Write {} a 40 to 60 word invitation for a {} party on {}. Don't write [Your name].".format(name, party_type, date)
 	
-	if(prod):
+	if(!prod):
 		return (1, gpt_cached_invitation())
 	return askgpt(prompt)
 
@@ -39,7 +39,7 @@ def gpt_create_arrangement(num_people, party_type):
 		+ "\"supplies\":{{ \"1\": [ supplies guest 1 should bring ] , ... , \"n\": [ supplies guest n should bring ] }} }}"
 		).format(party_type,num_people)
 
-	if(prod):
+	if(!prod):
 		return (1, gpt_cached_arrangement())
 	
 	return askgpt(prompt)
@@ -53,7 +53,7 @@ def gpt_rate_peronal_liking_foreach(person, event):
 	prompt = (f"Here is a person that likes {likings}, but hates {hated}." +
 		f"how much on a scale from 1 to 10 is he expected to enjoy next activities: {event_desc}. Return only the number.")
 
-	if(prod):
+	if(!prod):
 		return (1, gpt_cached_rates())
 
 	return askgpt(prompt)
@@ -67,7 +67,7 @@ def gpt_rate_personal_liking(event, people):
 	event_descs = event.title + ": " + event.description
 	prompt = (f"Here is an event {event_descs} and a list of people and their likes and dislikes: {people_list}. How much on a scale from 1 to 10 is each person expected to enjoy the event? Return only the numbers.")
 
-	if(prod):
+	if(!prod):
 		return (1, gpt_cached_pesonal_likings())
 
 	return askgpt(prompt)
@@ -82,7 +82,7 @@ def get_event_description(event, people):
 	ans = askgpt(
 		f"please write short fun description of next event: {event.title} and reasons why next people will like it and should attend: {people_des}. Please keep it short.")
 
-	if(prod):
+	if(!prod):
 		return (1,gpt_cached_event_descriptions())
 	
 	return ans
@@ -120,10 +120,10 @@ if __name__ == "__main__":
 	#status, result = gpt_create_arrangement(7, "skydiving")
 	#print(result)
 
-	#prod = True
+	#!prod = True
 	#status, result = gpt_create_invitation("Vilma", "Baking Party", "23.8.2023")
 	#print(result)
 
-	#prod = True
+	#!prod = True
 	#status, result = gpt_create_arrangement(7, "skydiving")
 	#print(result)
