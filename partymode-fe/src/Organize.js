@@ -90,10 +90,10 @@ function Organize() {
                                 <table className="table" style={{width: "100%"}}>
                                     <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>E-mail</th>
-                                        <th>Phone Number</th>
-                                        <th>Location</th>
+                                        <th class="has-text-centered">Name</th>
+                                        <th class="has-text-centered">E-mail</th>
+                                        <th class="has-text-centered">Phone Number</th>
+                                        <th class="has-text-centered">Location</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -123,8 +123,8 @@ function Organize() {
                                 <table className="table" style={{width: "100%"}}>
                                     <thead>
                                     <tr>
-                                        <th>Assignee</th>
-                                        <th>What they'll bring</th>
+                                        <th class="has-text-centered">Assignee</th>
+                                        <th class="has-text-centered">What they'll bring</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -152,8 +152,8 @@ function Organize() {
                                 <table className="table" style={{width: "100%"}}>
                                     <thead>
                                     <tr>
-                                        <th>Assignee</th>
-                                        <th>What they'll take care of</th>
+                                        <th class="has-text-centered">Assignee</th>
+                                        <th class="has-text-centered">What they'll take care of</th>
                                     </tr>
                                     </thead>
                                     <tbody>
