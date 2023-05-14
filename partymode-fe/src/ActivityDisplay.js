@@ -71,7 +71,7 @@ export default function ActivityDisplay({
                         <div className={`subtitle is-5 ${isBest ? "has-text-white" : ""}`}>🎉 {carbonFootprint}</div>
                     </div>
                     <div className={"column"}>
-                        <div className={`title is-4 ${isBest ? "has-text-white" : ""}`}>Opening hours</div>
+                        <div className={`title is-4 ${isBest ? "has-text-white" : ""}`}>Suggested time</div>
                         <div className={`subtitle is-5 ${isBest ? "has-text-white" : ""}`}>{openingHours}</div>
                     </div>
                 </div>
