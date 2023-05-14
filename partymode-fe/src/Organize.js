@@ -40,21 +40,22 @@ function Organize() {
         setUsers(data.users);
 
         var newTasks = [];
-        for (var key in data.arrangements.tasks) {
-            for (var taskKey in data.arrangements.tasks[key]) {
-                newTasks.push([key, data.arrangements.tasks[key][taskKey]]);
+        for (var key in data.arrangements.arrangements.tasks) {
+            for (var taskKey in data.arrangements.arrangements.tasks[key]) {
+                newTasks.push([key, data.arrangements.arrangements.tasks[key][taskKey]]);
             }
         }
         setTasks(newTasks);
 
         var newSupplies = [];
-        for (var key in data.arrangements.supplies) {
+        for (var key in data.arrangements.arrangements.supplies) {
             // for each item in the array
-            for (const supplyKey in data.arrangements.supplies[key]) {
-                newSupplies.push([key, data.arrangements.supplies[key][supplyKey]]);
+            for (const supplyKey in data.arrangements.arrangements.supplies[key]) {
+                newSupplies.push([key, data.arrangements.arrangements.supplies[key][supplyKey]]);
             }
         }
         setSupplies(newSupplies);
+        console.log(newSupplies)
         setEvent(data.event);
     }
 
