@@ -1,6 +1,6 @@
 import './App.css';
 import 'bulma/css/bulma.min.css';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Navigate} from "react-router-dom";
 import ActivityDisplay from "./ActivityDisplay";
 import {MapContainer, Marker, Popup, TileLayer} from "react-leaflet";
@@ -10,12 +10,27 @@ import {MapContainer, Marker, Popup, TileLayer} from "react-leaflet";
 function Map() {
     const [goHome, setGoHome] = useState(false);
     const [showModal, setShowModal] = useState(false);
-    const markers = [
-        [46.06889, 14.48897, "Kino Šiška", "Morebitni komentar"],
-        [46.06467, 14.54863, "Woop", "Morebitni komentar"],
-        [46.071, 14.5322, "Pokopališče Žale", "Morebitni komentar"]
-    ];
+    const [events, setEvents] = useState(null);
+    const [markers, setMarkers] = useState(null);
 
+    const url = "http://127.0.0.1:5000/rank-events/1";
+
+    useEffect(() => {
+        getMapDetails()
+    }, [])
+
+    const getMapDetails = async () => {
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log(data);
+        var newMarkers = [];
+        for (let i = 0; i < 3; i++) {
+            const splitLocation = data[i].location.split(",");
+            newMarkers.push([splitLocation[0], splitLocation[1], data[i].name, data[i].description]);
+        }
+        setMarkers(newMarkers);
+        setEvents([data[0], data[1], data[2]]);
+    }
 
 
     return (
@@ -31,7 +46,7 @@ function Map() {
             <br/><br/><br/>
 
 
-            <div className="container">
+            {events !== null && <div className="container">
                 {/*<button className="button is-primary is-large" onClick={() => setShowModal(true)}>Show Modal</button>*/}
                 <div class={`modal ${showModal ? "is-active" : ""}`}>
                     <div class="modal-background"></div>
@@ -55,7 +70,7 @@ function Map() {
                     <div className="column">
 
 
-                        {!showModal && <MapContainer center={[46.057, 14.5058]} zoom={13} scrollWheelZoom={false}>
+                        {!showModal && markers !== null && <MapContainer center={[46.057, 14.5058]} zoom={13} scrollWheelZoom={false}>
                             <TileLayer
                                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -77,34 +92,34 @@ function Map() {
                             setShowModal(true)
                         }}>
                             <ActivityDisplay
-                                activityName={"Kino Šiška"}
-                                activityLocation={"Trg prekomorskih brigad 3, Ljubljana"}
+                                activityName={events[0].title}
+                                activityLocation={events[0].location}
                                 isBest={true}
-                                carbonFootprint={"0.5 kg CO2"}
-                                openingHours={"8:00 - 20:00"}
-                                score={"4.5"}
+                                carbonFootprint={events[0].co2 + " kg CO2"}
+                                openingHours={events[0].time}
+                                score={events[0].score.toFixed(1)}
                             /></div>
                         <div onClick={() => {
                             setShowModal(true)
                         }}>
                             <ActivityDisplay
-                                activityName={"Woop! Trampolin park"}
-                                activityLocation={"Leskovškova 1a, Ljubljana"}
+                                activityName={events[1].title}
+                                activityLocation={events[1].location}
                                 isBest={false}
-                                carbonFootprint={"5 kg CO2"}
-                                openingHours={"8:00 - 19:00"}
-                                score={"4.2"}
+                                carbonFootprint={events[1].co2 + " kg CO2"}
+                                openingHours={events[1].time}
+                                score={events[1].score.toFixed(1)}
                             /></div>
                         <div onClick={() => {
                             setShowModal(true)
                         }}>
                             <ActivityDisplay
-                                activityName={"Pokopališče Žale"}
-                                activityLocation={"Jarška cesta 2, Ljubljana"}
+                                activityName={events[2].title}
+                                activityLocation={events[2].location}
                                 isBest={false}
-                                carbonFootprint={"0.5 kg CO2"}
-                                openingHours={"5:00 - 21:00"}
-                                score={"2.2"}
+                                carbonFootprint={events[2].co2 + " kg CO2"}
+                                openingHours={events[2].time}
+                                score={events[2].score.toFixed(1)}
                             /></div>
 
                     </div>
@@ -112,7 +127,7 @@ function Map() {
 
                 </div>
 
-            </div>
+            </div>}
         </div>
     );
 }
