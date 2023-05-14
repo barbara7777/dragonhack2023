@@ -106,8 +106,8 @@ event1 = Event(0,
 			   "Saddle up for a thrilling Horse Riding event! 🐎 Matic, Majda, and Bojan, get ready to hang by the river and explore nature while riding these majestic creatures. Perfect for cinema lovers seeking an epic outdoor adventure and trampoline enthusiasts craving a new bounce. Vilma, we're sorry, but this one isn't for you due to your horse dislike. For the rest, RSVP and join us for an unforgettable ride. Giddy up! 🌳🐴",
 			   "Monday",
 			   "12:00",
-			   "46.03975372396684, 14.561978611237313",
-			   "Trim otok Hrušica/pod Golovcem",
+			   "46.04977584588178, 14.53270293852464",
+			   "Park Kodeljevo - Šport Ljubljana",
 			   5,
 			   6)
 
@@ -147,7 +147,7 @@ event5 = Event(4,
 			   "Saturday",
 			   "16:00",
 			   "46.067100, 14.491936",
-			   "Celovška cesta 99 Ljubljana",
+			   "Celovška cesta 99, 1000 Ljubljana",
 			   6,
 			   1)
 
